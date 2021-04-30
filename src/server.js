@@ -1,4 +1,5 @@
 const express = require("express");
+const exhbs = require("express-handlebars");
 const path = require("path");
 
 // inicializacion
@@ -14,6 +15,20 @@ app.set("port", process.env.PORT || 3000);
 // para windows linux o mac
 app.set("views", path.join(__dirname, "views"));
 
+// plantillas
+
+app.engine(
+  ".hbs",
+  exhbs({
+    defaultLayout: "main",
+    layoutsDir: path.join(app.get("views"), "layouts"),
+    partialsDir: path.join(app.get("views"), "partials"),
+    extname: ".hbs",
+  })
+);
+
+app.set("view engine", ".hbs");
+
 // funciones para ejecutar peticiones
 
 // soporte para los datos que vienen del server
@@ -25,7 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // llamada a la raiz del proyecto
 app.get("/", (req, res) => {
-  res.send("hola mundo");
+  res.render("index");
 });
 
 // variables globales
