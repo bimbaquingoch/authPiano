@@ -22,11 +22,11 @@ npm run start
 
 ## Authors
 
-👤 **Diego Bahamonde**
-👤 **Kevin Changoluisa**
-👤 **Bryan Imbaquingo**
-👤 **Arnaldo Ortiz**
-👤 **Wilian Tapia**
+- 👤 **Diego Bahamonde**
+- 👤 **Kevin Changoluisa**
+- 👤 **Bryan Imbaquingo**
+- 👤 **Arnaldo Ortiz**
+- 👤 **Wilian Tapia**
 
 ## Show your support
 
