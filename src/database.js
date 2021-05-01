@@ -1,7 +1,12 @@
+// llamamos al modulo de mongoose
 const mongoose = require("mongoose");
 
+// llamamos a las variables gloables del modulo
+// process.env, son variables de entornor que vienen
+// ya instaladas en NODEJS
 const { PIANO_MONGODB_HOST, PIANO_MONGODB_DATABASE } = process.env;
 
+// le decimos desde donde queremos que se ejecute
 const mongodbURL = `mongodb://${PIANO_MONGODB_HOST}/${PIANO_MONGODB_DATABASE}`;
 
 mongoose

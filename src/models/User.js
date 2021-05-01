@@ -1,6 +1,18 @@
+// generamos la clase que es el usuario con
+// todos sus campos
+
+// esto llama funcionalidades de mongoose
+// mongoose es un paquete de nodejs para la parte de mongoDB
 const { Schema, model } = require("mongoose");
+
+// paquete de nodejs para encriptar informacion
+// en este caso lo vamos a usar para encriptar la contraseña
 const bcrypt = require("bcryptjs");
 
+// la "clase" usuario
+// definimos todo lo que va a contener esta clase
+// todo es formato JSON
+// esta definido para que los campos sean requeridos
 const userSchema = new Schema(
   {
     nombre: {
@@ -76,8 +88,13 @@ userSchema.methods.encryptPWD = async (password) => {
 
 // comparara la contraseña que se ingresa
 userSchema.methods.comparaPWD = async function (password) {
+  // si considen
   // devuelve true o false
   await bcrypt.compare(password, this.password);
 };
 
+// asi se exportan los modulos de javascript para
+// poder acceder a ellos desde otros archivos
+// exportamos el modelo como "Usuario" con el contenido
+// que definimos dentro de userSchema
 module.exports = model("Usuario", userSchema);
