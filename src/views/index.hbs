@@ -1,8 +1,207 @@
-<header>
-<h2>soy un header</h2>
-</header>
-<p>un lorem ipsum</p>
-<footer>
-<p>soy un footer content</p>
-</footer>
+<nav class="content-nav">
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link active" href="registro.html">Registro</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="login.html">Iniciar Sesión</a>
+    </li>
+  </ul>
+</nav>
 
+<form class="formulario" method="">
+  <h1 class='animate__fadeInUp'>Registro</h1>
+  {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="text"
+      class="form-control animate__fadeInUp"
+      id="nombre"
+      placeholder="NOMBRE"
+      name="registroNombre"
+      autocomplete="name"
+      required
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="text"
+      class="form-control animate__fadeInUp"
+      id="apellido"
+      placeholder="APELLIDO"
+      name="registroApellido"
+      autocomplete="lastname"
+      required
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="text"
+      class="form-control animate__fadeInUp"
+      id="nick"
+      placeholder="NICK NAME"
+      name="registroNickname"
+      required
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="email"
+      class="form-control animate__fadeInUp"
+      id="correo"
+      placeholder="CORREO"
+      name="registroCorreo"
+      autocomplete='email'
+      required
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="password"
+      class="form-control animate__fadeInUp"
+      id="password"
+      placeholder="PASSWORD"
+      name="registroPassword"
+      required
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="password"
+      class="form-control animate__fadeInUp"
+      id="verificarPassword"
+      placeholder="VERIFICAR PASSWORD"
+      name="registroVPassword"
+      required
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+
+  <input 
+      list="estadoCivil" 
+      placeholder="ESTADO CIVIL" 
+      class="form-control animate__fadeInUp" 
+      required 
+  />
+    <datalist name="estadoCivil" id="estadoCivil">
+      <option value="Soltero"></option>
+      <option value="Casado"></option>
+      <option value="Divorciado"></option>
+      <option value="Viudo"></option>
+      <option value="Unión Libre"></option>
+    </datalist>
+
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="tel"
+      class="form-control animate__fadeInUp"
+      id="telefono"
+      placeholder="TELEFONO"
+      name="registroTelefono"
+      required
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="date"
+      class="form-control animate__fadeInUp"
+      id="Fecha"
+      placeholder="DD/MM/YYYY"
+      name="registroFecha"
+      required
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="text"
+      class="form-control animate__fadeInUp"
+      id="provincia"
+      placeholder="PROVINCIA"
+      name="registroProvincia"
+      required
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="text"
+      class="form-control animate__fadeInUp"
+      id="ciudad"
+      placeholder="CIUDAD"
+      name="registroCiudad"
+      required
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input 
+      type="file" 
+      class="load-img animate__fadeInUp" 
+      id="file" 
+      accept="image/*" 
+    />
+    {{!--
+  </div>
+  --}} {{!--
+  <div class="form-group">
+    --}}
+    <input
+      type="text"
+      class="form-control animate__fadeInUp"
+      id="numCedula"
+      placeholder="NUMERO DE CEDULA"
+      name="registroCedula"
+      required
+    />
+    {{!--
+  </div>
+  --}}
+
+  <div class="content-gender animate__fadeInUp">
+    <label for="male">GENERO:</label>
+    <input type="radio" id="masculino" name="genero" value="masculino" />
+    <label for="masculino">M</label>
+    <input type="radio" id="femenino" name="genero" value="femenino" />
+    <label for="femenino">F</label>
+  </div>
+  <div class="content-buttons">
+    <button type="submit" class="btn btn-primary" style="margin-left: 10px">
+      Send
+    </button>
+
+    <button class="btn btn-warning" style="margin-left: 10px">Borrar</button>
+  </div>
+</form>
