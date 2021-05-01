@@ -39,9 +39,11 @@ app.use(express.urlencoded({ extended: false }));
 // rutas
 
 // llamada a la raiz del proyecto
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
+
+app.use(require("./routes/index.routes"));
 
 // variables globales
 
