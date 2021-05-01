@@ -1,6 +1,8 @@
 const express = require("express");
 const exhbs = require("express-handlebars");
 const path = require("path");
+const flash = require("connect-flash");
+const session = require("express-session");
 
 // inicializacion
 const app = express();
@@ -35,14 +37,17 @@ app.set("view engine", ".hbs");
 // cada que lleguen datos de un form, los convertimos
 // en un JSON para manipular en JSON
 app.use(express.urlencoded({ extended: false }));
+// modulo que guarda mensajes en el servidor
+app.use(
+  session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(flash());
 
 // rutas
-
-// llamada a la raiz del proyecto
-// app.get("/", (req, res) => {
-//   res.render("index");
-// });
-
 app.use(require("./routes/index.routes"));
 
 // variables globales

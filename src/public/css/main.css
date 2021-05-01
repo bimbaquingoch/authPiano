@@ -35,8 +35,12 @@
   width: 80%;
 }
 
-.content-gender {
+.genero {
   margin-top: 20px;
+}
+
+.content-gender {
+  margin-top: 10px;
   flex-direction: column;
 }
 
@@ -45,8 +49,15 @@
   margin-bottom: 50px;
 }
 
-.animate__fadeInUp {
+.animate__fadeInUp,
+.animate__fadeInLeft {
   animation-duration: 1250ms;
+}
+
+.animate__bounce {
+  animation-duration: 2000ms;
+  animation-delay: 1700ms;
+  animation-iteration-count: 4;
 }
 
 .nav-link {
@@ -62,7 +73,7 @@
 
 @media (min-width: 600px) {
   .formulario {
-    width: 600px;
+    width: 500px;
     margin: 0 auto;
     margin-bottom: 50px;
   }
@@ -72,5 +83,10 @@
     justify-content: flex-end;
     box-shadow: 0 2px 2px var(--info);
     margin-bottom: 40px;
+  }
+
+  .animate__bounce:hover {
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
   }
 }

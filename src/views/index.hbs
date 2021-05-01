@@ -1,4 +1,4 @@
-<form class="formulario" method="">
+<form class="formulario" action='/' method="POST">
   <h1 class='animate__fadeInUp'>Registro</h1>
   {{!--
   <div class="form-group">
@@ -8,7 +8,7 @@
       class="form-control animate__fadeInUp"
       id="nombre"
       placeholder="NOMBRE"
-      name="registroNombre"
+      name="nombre"
       autocomplete="name"
       required
     />
@@ -22,7 +22,7 @@
       class="form-control animate__fadeInUp"
       id="apellido"
       placeholder="APELLIDO"
-      name="registroApellido"
+      name="apellido"
       autocomplete="lastname"
       required
     />
@@ -36,7 +36,7 @@
       class="form-control animate__fadeInUp"
       id="nick"
       placeholder="NICK NAME"
-      name="registroNickname"
+      name="nickname"
       required
     />
     {{!--
@@ -49,7 +49,7 @@
       class="form-control animate__fadeInUp"
       id="correo"
       placeholder="CORREO"
-      name="registroCorreo"
+      name="email"
       autocomplete='email'
       required
     />
@@ -62,8 +62,8 @@
       type="password"
       class="form-control animate__fadeInUp"
       id="password"
-      placeholder="PASSWORD"
-      name="registroPassword"
+      placeholder="CONTRASEÑA"
+      name="password"
       required
     />
     {{!--
@@ -76,7 +76,7 @@
       class="form-control animate__fadeInUp"
       id="verificarPassword"
       placeholder="VERIFICAR PASSWORD"
-      name="registroVPassword"
+      name="verifypass"
       required
     />
     {{!--
@@ -89,9 +89,10 @@
       list="estadoCivil" 
       placeholder="ESTADO CIVIL" 
       class="form-control animate__fadeInUp" 
+      name='estCivil'
       required 
   />
-    <datalist name="estadoCivil" id="estadoCivil">
+    <datalist name="estCivil" id="estadoCivil">
       <option value="Soltero"></option>
       <option value="Casado"></option>
       <option value="Divorciado"></option>
@@ -109,7 +110,7 @@
       class="form-control animate__fadeInUp"
       id="telefono"
       placeholder="TELEFONO"
-      name="registroTelefono"
+      name="phone"
       required
     />
     {{!--
@@ -122,7 +123,7 @@
       class="form-control animate__fadeInUp"
       id="Fecha"
       placeholder="FECHA DE NACIMIENTO"
-      name="registroFecha"
+      name="age"
       required
     />
     {{!--
@@ -135,7 +136,7 @@
       class="form-control animate__fadeInUp"
       id="provincia"
       placeholder="PROVINCIA"
-      name="registroProvincia"
+      name="provincia"
       required
     />
     {{!--
@@ -148,7 +149,7 @@
       class="form-control animate__fadeInUp"
       id="ciudad"
       placeholder="CIUDAD"
-      name="registroCiudad"
+      name="ciudad"
       required
     />
     {{!--
@@ -160,6 +161,7 @@
       type="file" 
       class="load-img animate__fadeInUp" 
       id="file" 
+      name='img'
       accept="image/*" 
     />
     {{!--
@@ -172,19 +174,21 @@
       class="form-control animate__fadeInUp"
       id="numCedula"
       placeholder="NUMERO DE CEDULA"
-      name="registroCedula"
+      name="cedula"
       required
     />
     {{!--
   </div>
   --}}
 
+  <label class='genero animate__fadeInUp' for="">GENERO:</label>
   <div class="content-gender animate__fadeInUp">
-    <label for="male">GENERO:</label>
     <input type="radio" id="masculino" name="genero" value="masculino" />
-    <label for="masculino">M</label>
+    <label for="masculino">Masculino</label>
     <input type="radio" id="femenino" name="genero" value="femenino" />
-    <label for="femenino">F</label>
+    <label for="femenino">Femenino</label>
+    <input type="radio" id="otro" name="genero" value="otro" />
+    <label for="otro">Otro</label>
   </div>
   <div class="content-buttons">
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">

@@ -1,18 +1,19 @@
-<form class="formulario" method="">
+<form class="formulario" action='/login' method="POST">
   <h1 class='animate__fadeInUp'>Login</h1>
   {{!--
   <div class="form-group">
     --}}
   <img class="animate__fadeInUp" src="https://img.icons8.com/metro/76/000000/change-user-male.png"/>
     <input
-      type="text"
+      type="email"
       class="form-control animate__fadeInUp"
-      id="nombre"
-      placeholder="NOMBRE"
-      name="registroNombre"
-      autocomplete="name"
+      id="correo"
+      placeholder="CORREO"
+      name="registroCorreo"
+      autocomplete='email'
       required
     />
+
     <input
       type="password"
       class="form-control animate__fadeInUp"
