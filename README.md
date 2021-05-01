@@ -20,9 +20,13 @@ npm install
 npm run start
 ```
 
-## Author
+## Authors
 
-👤 **Bryan Imbaquingo <bryan_3871@hotmail.com>**
+👤 **Diego Bahamonde**
+👤 **Kevin Changoluisa**
+👤 **Bryan Imbaquingo**
+👤 **Arnaldo Ortiz**
+👤 **Wilian Tapia**
 
 ## Show your support
 
