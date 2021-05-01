@@ -20,6 +20,12 @@ npm install
 npm run start
 ```
 
+## Development
+
+```sh
+npm run dev
+```
+
 ## Authors
 
 - 👤 **Diego Bahamonde**
@@ -35,4 +41,3 @@ Give a ⭐️ if this project helped you!
 ---
 
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
-
