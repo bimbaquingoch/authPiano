@@ -5,6 +5,7 @@ const exhbs = require("express-handlebars");
 const path = require("path");
 const flash = require("connect-flash");
 const session = require("express-session");
+const morgan = require("morgan");
 
 // modulo APP
 // inicializacion del modulo de express
@@ -42,6 +43,8 @@ app.set("view engine", ".hbs");
 
 // funciones para ejecutar peticiones
 
+// muestra el tipo de peticiones por consola
+app.use(morgan("dev"));
 // soporte para los datos que vienen del server
 // cada que lleguen datos de un form, los convertimos
 // en un JSON para manipular en JSON

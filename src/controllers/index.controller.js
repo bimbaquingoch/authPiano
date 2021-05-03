@@ -64,17 +64,20 @@ indexCtrl.registro = async (req, res) => {
       age,
       provincia,
       ciudad,
-      img,
       cedula,
     });
   } else {
     const emailUser = await User.findOne({ email: email });
+    const nickUser = await User.findOne({ nickname: nickname });
     //si se encontro un correo
     if (emailUser) {
-      req.flash("error_msg", "Ya existe un usuario con este correo");
-      res.redirect("login");
+      errors.push({ text: "Ya existe un usuario con este correo" });
+      res.render("login", { errors });
+    } else if (nickUser) {
+      errors.push({ text: "Ya existe un usuario con este nickname" });
+      res.render("login", { errors });
     } else {
-      const newUser = new User({
+      const usuarioNuevo = new User({
         nombre,
         apellido,
         nickname,
@@ -90,8 +93,10 @@ indexCtrl.registro = async (req, res) => {
         cedula,
         genero,
       });
-      await newUser.save();
-      res.redirect("login");
+      await usuarioNuevo.save();
+      console.log(usuarioNuevo);
+      errors.push({ text: "Usuario registrado exitosamente" });
+      res.render("login", { errors });
     }
   }
 };
