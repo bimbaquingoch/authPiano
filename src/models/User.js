@@ -90,7 +90,7 @@ userSchema.methods.encryptPWD = async (password) => {
 userSchema.methods.comparaPWD = async function (password) {
   // si considen
   // devuelve true o false
-  await bcrypt.compare(password, this.password);
+  return await bcrypt.compare(password, this.password);
 };
 
 // asi se exportan los modulos de javascript para

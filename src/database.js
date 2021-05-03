@@ -13,6 +13,7 @@ mongoose
   .connect(mongodbURL, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
+    useCreateIndex: true,
   })
   .then((db) => console.log("Base de datos conectada"))
   .catch((err) => console.log(`ERROR: ${err}`));

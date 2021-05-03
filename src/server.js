@@ -65,9 +65,10 @@ app.use(flash());
 app.use(require("./routes/index.routes"));
 
 // variables globales
-/*
-Aun no definimos ninguna variable global
-  */
+app.use((req, res, next) => {
+  res.locals.error_msg = req.flash("error_msg");
+  next();
+});
 
 // archivos estaticos (html y css de public)
 // le decimos a NODEJS, aqui esta la carpeta public

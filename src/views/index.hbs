@@ -1,4 +1,4 @@
-<form class="formulario" action='/' method="POST">
+<form class="formulario" action='/' method="POST" autocomplete='on'>
   <h1 class='animate__fadeInUp'>Registro</h1>
   {{!--
   <div class="form-group">
@@ -10,6 +10,7 @@
       placeholder="NOMBRE"
       name="nombre"
       autocomplete="name"
+      value="{{nombre}}"
       required
     />
     {{!--
@@ -23,7 +24,8 @@
       id="apellido"
       placeholder="APELLIDO"
       name="apellido"
-      autocomplete="lastname"
+      value="{{apellido}}"
+      autocomplete="surname"
       required
     />
     {{!--
@@ -36,6 +38,7 @@
       class="form-control animate__fadeInUp"
       id="nick"
       placeholder="NICK NAME"
+      value="{{nickname}}"
       name="nickname"
       required
     />
@@ -50,6 +53,7 @@
       id="correo"
       placeholder="CORREO"
       name="email"
+      value="{{email}}"
       autocomplete='email'
       required
     />
@@ -64,6 +68,7 @@
       id="password"
       placeholder="CONTRASEÑA"
       name="password"
+      value="{{password}}"
       required
     />
     {{!--
@@ -77,6 +82,7 @@
       id="verificarPassword"
       placeholder="VERIFICAR PASSWORD"
       name="verifypass"
+      value="{{verifypass}}"
       required
     />
     {{!--
@@ -90,9 +96,10 @@
       placeholder="ESTADO CIVIL" 
       class="form-control animate__fadeInUp" 
       name='estCivil'
+      value="{{estCivil}}"
       required 
   />
-    <datalist name="estCivil" id="estadoCivil">
+   <datalist name="estCivil" id="estadoCivil">
       <option value="Soltero"></option>
       <option value="Casado"></option>
       <option value="Divorciado"></option>
@@ -111,6 +118,7 @@
       id="telefono"
       placeholder="TELEFONO"
       name="phone"
+      value="{{phone}}"
       required
     />
     {{!--
@@ -124,6 +132,7 @@
       id="Fecha"
       placeholder="FECHA DE NACIMIENTO"
       name="age"
+      value="{{age}}"
       required
     />
     {{!--
@@ -137,6 +146,7 @@
       id="provincia"
       placeholder="PROVINCIA"
       name="provincia"
+      value="{{provincia}}"
       required
     />
     {{!--
@@ -150,6 +160,7 @@
       id="ciudad"
       placeholder="CIUDAD"
       name="ciudad"
+      value="{{ciudad}}"
       required
     />
     {{!--
@@ -161,7 +172,8 @@
       type="file" 
       class="load-img animate__fadeInUp" 
       id="file" 
-      name='img'
+      name="img"
+      value="{{img}}"
       accept="image/*" 
     />
     {{!--
@@ -175,6 +187,7 @@
       id="numCedula"
       placeholder="NUMERO DE CEDULA"
       name="cedula"
+      value="{{cedula}}"
       required
     />
     {{!--
@@ -192,7 +205,9 @@
   </div>
   <div class="content-buttons">
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">
+      <strong>
       Send
+      </strong>
     </button>
 
     <button class="btn btn-warning" style="margin-left: 10px">Borrar</button>
