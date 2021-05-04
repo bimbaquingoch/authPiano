@@ -25,6 +25,7 @@ indexCtrl.renderLogin = (req, res) => {
 // los formularios de registro y login
 indexCtrl.registro = async (req, res) => {
   const mensajes = [];
+  const errors = [];
   const {
     nombre,
     apellido,
@@ -36,25 +37,36 @@ indexCtrl.registro = async (req, res) => {
     phone,
     age,
     provincia,
-    ciudad,
+    canton,
     img,
     cedula,
     genero,
   } = req.body;
 
+
+
   if (password != verifypass) {
-    mensajes.push({ text: "Las contraseñas no coinciden" });
+    errors.push({ text: 'Las contraseñas no coinciden.' });
   }
 
-  if (password.length < 5) {
-    mensajes.push({
-      text: "La contraseña es muy corta! prueba con más de 8 caracteres",
-    });
+  const emailUser = await User.findOne({ email: email });
+  if (emailUser) {
+    errors.push({ text: 'Su email ya se encuentra registrado' });
   }
 
-  if (mensajes.length > 0) {
+  const cedulaUser = await User.findOne({ cedula: cedula });
+  if (cedulaUser) {
+    errors.push({ text: 'Su cedula ya se encuentra registrado' });
+  }
+
+  const nicknameUser = await User.findOne({ nickname: nickname });
+  if (nicknameUser) {
+    errors.push({ text: 'Su nickname ya se encuentra registrado' });
+  }
+
+  if (errors.length > 0) {
     res.render("index", {
-      mensajes,
+      errors,
       nombre,
       apellido,
       nickname,
@@ -63,55 +75,34 @@ indexCtrl.registro = async (req, res) => {
       phone,
       age,
       provincia,
-      ciudad,
+      canton,
       cedula,
+      genero
     });
   } else {
-    const emailUser = await User.findOne({ email: email });
-    const nickUser = await User.findOne({ nickname: nickname });
-    //si se encontro un correo
-    if (emailUser) {
-      mensajes.push({ text: "Ya existe un usuario con este correo" });
-      res.render("login", { mensajes });
-    } else if (nickUser) {
-      mensajes.push({ text: "Ya existe un usuario con este nickname" });
-      res.render("index", {
-        mensajes,
-        nombre,
-        apellido,
-        email,
-        estCivil,
-        phone,
-        age,
-        provincia,
-        ciudad,
-        cedula,
-      });
-    } else {
-      const usuarioNuevo = new User({
-        nombre,
-        apellido,
-        nickname,
-        email,
-        password,
-        verifypass,
-        estCivil,
-        phone,
-        age,
-        provincia,
-        ciudad,
-        img,
-        cedula,
-        genero,
-      });
-      // encriptamos la contraseña del usuario
-      usuarioNuevo.password = await usuarioNuevo.encryptPWD(password);
-      usuarioNuevo.verifypass = usuarioNuevo.password;
-      await usuarioNuevo.save();
-      console.log(usuarioNuevo);
-      mensajes.push({ text: "Usuario registrado exitosamente" });
-      res.render("login", { mensajes });
-    }
+    const usuarioNuevo = new User({
+      nombre,
+      apellido,
+      nickname,
+      email,
+      password,
+      verifypass,
+      estCivil,
+      phone,
+      age,
+      provincia,
+      canton,
+      img,
+      cedula,
+      genero,
+    });
+    // encriptamos la contraseña del usuario
+    usuarioNuevo.password = await usuarioNuevo.encryptPWD(password);
+    usuarioNuevo.verifypass = usuarioNuevo.password;
+    await usuarioNuevo.save();
+    console.log(usuarioNuevo);
+    mensajes.push({ text: "Usuario registrado exitosamente" });
+    res.render("login", { mensajes });
   }
 };
 

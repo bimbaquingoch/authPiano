@@ -48,7 +48,7 @@ const userSchema = new Schema(
     phone: {
       type: String,
       require: true,
-      unique: true,
+      //unique: true,
     },
     age: {
       type: Date,
@@ -58,7 +58,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    ciudad: {
+    canton: {
       type: String,
       require: true,
     },

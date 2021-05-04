@@ -1,202 +1,214 @@
-<form class="formulario" action='/' method="POST" autocomplete='on'>
+<form class="formulario" action='/' method="POST">
   <h1 class='animate__fadeInUp'>Registro</h1>
   {{!--
   <div class="form-group">
     --}}
-    <input
-      type="text"
-      class="form-control animate__fadeInUp"
-      id="nombre"
-      placeholder="NOMBRE"
-      name="nombre"
-      autocomplete="name"
-      value="{{nombre}}"
-      required
-    />
+    <input type="text" class="form-control animate__fadeInUp" id="nombre" placeholder="NOMBRE" name="nombre"
+      autocomplete="name" value="{{nombre}}" required />
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input
-      type="text"
-      class="form-control animate__fadeInUp"
-      id="apellido"
-      placeholder="APELLIDO"
-      name="apellido"
-      value="{{apellido}}"
-      autocomplete="surname"
-      required
-    />
+    <input type="text" class="form-control animate__fadeInUp" id="apellido" placeholder="APELLIDO" name="apellido"
+      autocomplete="lastname" value="{{apellido}}" required />
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input
-      type="text"
-      class="form-control animate__fadeInUp"
-      id="nick"
-      placeholder="NICK NAME"
-      value="{{nickname}}"
-      name="nickname"
-      required
-    />
+    <input type="text" class="form-control animate__fadeInUp" id="nick" placeholder="NICK NAME" name="nickname"
+      value="{{nickname}}" required />
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input
-      type="email"
-      class="form-control animate__fadeInUp"
-      id="correo"
-      placeholder="CORREO"
-      name="email"
-      value="{{email}}"
-      autocomplete='email'
-      required
-    />
+    <input type="email" class="form-control animate__fadeInUp" id="correo" placeholder="CORREO" name="email"
+      autocomplete='email' value="{{email}}" required />
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input
-      type="password"
-      class="form-control animate__fadeInUp"
-      id="password"
-      placeholder="CONTRASEÑA"
-      name="password"
-      value="{{password}}"
-      required
-    />
+    <input type="password" class="form-control animate__fadeInUp" id="password" placeholder="CONTRASEÑA" name="password"
+      required />
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input
-      type="password"
-      class="form-control animate__fadeInUp"
-      id="verificarPassword"
-      placeholder="VERIFICAR PASSWORD"
-      name="verifypass"
-      value="{{verifypass}}"
-      required
-    />
+    <input type="password" class="form-control animate__fadeInUp" id="verificarPassword"
+      placeholder="VERIFICAR PASSWORD" name="verifypass" required />
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
+    <select class="form-control" name="estCivil" id="estCivil" required>
+      <option value="">ESTADO CIVIL</option>
+    </select>
 
-  <input 
-      list="estadoCivil" 
-      placeholder="ESTADO CIVIL" 
-      class="form-control animate__fadeInUp" 
-      name='estCivil'
-      value="{{estCivil}}"
-      required 
-  />
-   <datalist name="estCivil" id="estadoCivil">
-      <option value="Soltero/a"></option>
-      <option value="Casado/a"></option>
-      <option value="Divorciado/a"></option>
-      <option value="Viudo/a"></option>
-      <option value="Unión Libre"></option>
-    </datalist>
+    <script type="text/javascript">
+      function cargarEstado() {
+        var array=["Soltero", "Casado", "Divorciado", "Viudo", "Unión de hecho"];
+        array.sort();
+        addOptions("estCivil", array);
+      }
+
+
+      //Función para agregar opciones a un <select>.
+      function addOptions(domElement, array) {
+        var selector = document.getElementsByName(domElement)[0];
+        for (estCivil in array) {
+          let opcion = document.createElement("option");
+          opcion.text = array[estCivil];
+          // Añadimos un value a los option para hacer mas facil escoger los pueblos
+          //opcion.value = array[estCivil]
+          selector.add(opcion);
+        }
+      }
+      cargarEstado();
+    </script>
+
 
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input
-      type="tel"
-      class="form-control animate__fadeInUp"
-      id="telefono"
-      placeholder="TELEFONO"
-      name="phone"
-      value="{{phone}}"
-      required
-    />
+    <input type="tel" class="form-control animate__fadeInUp" id="telefono" placeholder="TELEFONO" name="phone"
+      value="{{phone}}" required />
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input
-      type="date"
-      class="form-control animate__fadeInUp"
-      id="Fecha"
-      placeholder="FECHA DE NACIMIENTO"
-      name="age"
-      value="{{age}}"
-      required
-    />
+    <input type="date" class="form-control animate__fadeInUp" id="Fecha" placeholder="FECHA DE NACIMIENTO" name="age"
+      value="{{age}}" required />
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input
-      type="text"
-      class="form-control animate__fadeInUp"
-      id="provincia"
-      placeholder="PROVINCIA"
-      name="provincia"
-      value="{{provincia}}"
-      required
-    />
+
+    <select class="form-control" name="provincia" id="provincia" onchange="cargarPueblos();" required>
+      <option value="">Seleccione una Provincia...</option>
+    </select>
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input
-      type="text"
-      class="form-control animate__fadeInUp"
-      id="ciudad"
-      placeholder="CIUDAD"
-      name="ciudad"
-      value="{{ciudad}}"
-      required
-    />
+    <select class="form-control" name="canton" id="canton" required>
+      <option value="">Seleccione un cantón...</option>
+    </select>
+
+    <script type="text/javascript">
+      function cargarProvincias() {
+        var array = ["Azuay", "Bolívar", "Cañar", "Carchi", "Chimborazo",
+          "Cotopaxi", "El Oro", "Esmeraldas", "Galápagos", "Guayas", "Imbabura",
+          "Loja", "Los Ríos", "Manabí", "Morona Santiago", "Napo", "Orellana",
+          "Pastaza", "Pichincha", "Santa Elena", "Santo Domingo de los Tsáchilas",
+          "Sucumbíos", "Tungurahua", "Zamora Chinchipe"
+        ];
+        array.sort();
+        addOptions("provincia", array);
+      }
+
+
+      //Función para agregar opciones a un <select>.
+      function addOptions(domElement, array) {
+        var selector = document.getElementsByName(domElement)[0];
+        for (provincia in array) {
+          var opcion = document.createElement("option");
+          opcion.text = array[provincia];
+          // Añadimos un value a los option para hacer mas facil escoger los pueblos
+          opcion.value = array[provincia]
+          selector.add(opcion);
+        }
+      }
+
+
+
+      function cargarPueblos() {
+        // Objeto de provincias con pueblos
+        var listaPueblos = {
+          azuay: ["Cuenca", "Chordeleg", "El Pan", "Girón", "Guachapala", "Gualaceo", "Nabón", "Oña", "Paute", "Pucará", "San Fernando", "Santa Isabel", "Sevilla de Oro", "Sígsig"],
+          bolívar: ["Guaranda", "Caluma", "Chillanes", "Chimbo", "Echeandía", "Las Naves", "San Miguel"],
+          cañar: ["Azogues", "Biblián", "Cañar", "Déleg", "El Tambo", "La Troncal", "Suscal"],
+          carchi: ["Tulcán", "Mira", "Espejo", "Montúfar", "San Pedro de Huaca", "Bolívar"],
+          chimborazo: ["Riobamba", "Alausí", "Chambo", "Chunchi", "Colta", "Cumandá", "Guamote", "Guano", "Pallatanga", "Penipe"],
+          cotopaxi: ["Pujili", "Salcedo", "La Mana", "Latacunga", "Pangua", "Saquisili", "Sigchos"],
+          eloro: ["Machala", "Arenillas", "Atahualpa", "Balsas", "Chilla", "El Guabo", "Huaquillas", "Marcabeli", "Pasaje", "Piñas", "Portovelo", "Santa Rosa", "Zaruma", "Las Lajas"],
+          esmeraldas: ["Esmeraldas", "Eloy Alfaro", "Muisne", "Quininde", "San Lorenzo", "Atacames", "Rioverde", "La Concordia"],
+          galápagos: ["San Cristobal", "Isabela", "Santa Cruz"],
+          guayas: ["Guayaquil", "Alfredo Baquerizo Moreno (Jujan)", "Balao", "Balzar", "Colimes", "Daule", "Duran", "El Empalme", "El Triunfo", "Milagro", "Naranjal", "Naranjito", "Palestina", "Pedro Carbo", "Samborondon",
+            "Santa Lucia", "Salitre (Urbina Jado)", "San Jacinto De Yaguachi", "Playas", "Simon Bolivar", "Coronel Marcelino Maridueña", "Lomas De Sargentillo", "Nobol", "General Antonio Elizalde", "Isidro Ayora"],
+          imbabura: ["Ibarra", "Antonio Ante", "Cotacachi", "Otavalo", "Pimampiro", "San Miguel De Urcuqui"],
+          loja: ["Loja", "Calvas", "Catamayo", "Celica", "Chaguarpamba", "Espindola", "Gonzanama", "Macara", "Paltas", "Puyango", "Saraguro", "Sozoranga", "Zapotillo", "Pindal", "Quilanga", "Olmedo"],
+          losríos: ["Babahoyo", "Baba", "Montalvo", "Puebloviejo", "Quevedo", "Urdaneta", "Ventanas", "Vinces", "Palenque", "Buena Fe", "Valencia", "Mocache", "Quinsaloma"],
+          manabí: ["Portoviejo", "Bolivar", "Chone", "El Carmen", "Flavio Alfaro", "Jipijapa", "Junin", "Manta", "Montecristi", "Pajan", "Pichincha", "Rocafuerte", "Santa Ana", "Sucre", "Tosagua", "24 De Mayo", "Pedernales", "Puerto Lopez", "Jama",
+            "Jaramijo", "San Vicente"],
+          moronasantiago: ["Morona", "Gualaquiza", "Limon Indanza", "Palora", "Santiago", "Sucua", "Huamboya", "San Juan Bosco", "Taisha", "Logroño", "Pablo Sexto", "Canton Tiwintza"],
+          napo: ["Tena", "Archidona", "El Chaco", "Quijos", "Carlos Julio Arosemena Tola"],
+          orellana: ["Orellana", "Aguarico", "La Joya De Los Sachas", "Loreto"],
+          pastaza: ["Pastaza", "Mera", "Santa Clara", "Arajuno"],
+          pichincha: ["Quito", "Cayambe", "Mejia", "Pedro Moncayo", "Rumiñahui", "San Miguel De Los Bancos", "Pedro Vicente Maldonado", "Puerto Quito"],
+          santaelena: ["Santa Elena", "La Libertad", "Salinas"],
+          santodomingodelostsáchilas: ["Santo Domingo"],
+          sucumbíos: ["Lago Agrio", "Gonzalo Pizarro", "Putumayo", "Shushufindi", "Sucumbios", "Cascales", "Cuyabeno"],
+          tungurahua: ["Ambato", "Baños De Agua Santa", "Cevallos", "Mocha", "Patate", "Quero", "San Pedro De Pelileo", "Santiago De Pillaro", "Tisaleo"],
+          zamorachinchipe: ["Zamora", "Chinchipe", "Nangaritza", "Yacuambi", "Yantzaza (Yanzatza)", "El Pangui", "Centinela Del Condor", "Palanda", "Paquisha"]
+        }
+
+        var provincias = document.getElementById('provincia')
+        var cantones = document.getElementById('canton')
+        var provinciaSeleccionada = provincias.value
+        provinciaSeleccionada = provinciaSeleccionada.replace(/ /g, "")
+        provinciaSeleccionada = provinciaSeleccionada.toLowerCase()
+        console.log(provinciaSeleccionada)
+
+        // Se limpian los pueblos
+        cantones.innerHTML = '<option value="">Seleccione un Cantón...</option>'
+
+        if (provinciaSeleccionada !== '') {
+          // Se seleccionan los pueblos y se ordenan
+          provinciaSeleccionada = listaPueblos[provinciaSeleccionada]
+          provinciaSeleccionada.sort()
+
+          // Insertamos los pueblos
+          provinciaSeleccionada.forEach(function (canton) {
+            let opcion = document.createElement('option')
+            opcion.value = canton
+            opcion.text = canton
+            cantones.add(opcion)
+          });
+        }
+
+      }
+      cargarProvincias();
+    </script>
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input 
-      type="file" 
-      class="load-img animate__fadeInUp" 
-      id="file" 
-      name="img"
-      value="{{img}}"
-      accept="image/*" 
-    />
+    <input type="file" class="load-img animate__fadeInUp" id="file" name='img' accept="image/*" required />
     {{!--
   </div>
   --}} {{!--
   <div class="form-group">
     --}}
-    <input
-      type="text"
-      class="form-control animate__fadeInUp"
-      id="numCedula"
-      placeholder="NUMERO DE CEDULA"
-      name="cedula"
-      value="{{cedula}}"
-      required
-    />
+    <input type="text" class="form-control animate__fadeInUp" id="numCedula" placeholder="NUMERO DE CEDULA"
+      name="cedula" value="{{cedula}}" required />
     {{!--
   </div>
   --}}
 
   <label class='genero animate__fadeInUp' for="">GENERO:</label>
   <div class="content-gender animate__fadeInUp">
-    <input type="radio" id="masculino" name="genero" value="masculino" />
+    <input type="radio" id="masculino" name="genero" value="masculino" required />
     <label for="masculino">Masculino</label>
     <input type="radio" id="femenino" name="genero" value="femenino" />
     <label for="femenino">Femenino</label>
@@ -205,9 +217,7 @@
   </div>
   <div class="content-buttons">
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">
-      <strong>
       Send
-      </strong>
     </button>
 
     <button class="btn btn-warning" style="margin-left: 10px">Borrar</button>
