@@ -51,7 +51,7 @@
 
     <script type="text/javascript">
       function cargarEstado() {
-        var array=["Soltero", "Casado", "Divorciado", "Viudo", "Unión de hecho"];
+        var array = ["Soltero", "Casado", "Divorciado", "Viudo", "Unión de hecho"];
         array.sort();
         addOptions("estCivil", array);
       }
@@ -215,6 +215,83 @@
     <input type="radio" id="otro" name="genero" value="otro" />
     <label for="otro">Otro</label>
   </div>
+
+  <div class="animate__fadeInUp">
+    <h5>Selecciona tus notas &#x266b</h5>
+    <table class="justify-content-center table">
+      <thead>
+        <tr>
+          <th id="orden0"></th>
+          <th id="orden1"></th>
+          <th id="orden2"></th>
+          <th id="orden3"></th>
+        </tr>
+        <tr>
+          <th id="nota0"></th>
+          <th id="nota1"></th>
+          <th id="nota2"></th>
+          <th id="nota3"></th>
+        </tr>
+      </thead>
+    </table>
+
+    <div class="d-flex align-content-center">
+      <ul id="piano" class="set">
+        <li id="do" onclick="jsNota(this,174.614)" class="white b">
+          <p><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp;DO</p>
+        </li>
+
+        <li id="do#" onclick="jsNota(this,184.997)" class="black as">
+          <p style="color: azure; font-size: small;"><br><br><br><br>&nbsp;DO#</p>
+        </li>
+
+        <li id="re" onclick="jsNota(this,195.998)" class="white a">
+          <p><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp;RE</p>
+        </li>
+
+        <li id="re#" onclick="jsNota(this,207.652)" class="black gs">
+          <p style="color: azure; font-size: small;"><br><br><br><br>&nbsp;RE#</p>
+        </li>
+
+        <li id="mi" onclick="jsNota(this,220.000)" class="white g">
+          <p><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp;MI</p>
+        </li>
+
+        <li id="fa#" onclick="jsNota(this,233.082)" class="black fs">
+          <p style="color: azure; font-size: small;"><br><br><br><br>&nbsp;FA#</p>
+        </li>
+
+        <li id="fa" onclick="jsNota(this,246.942)" class="white f">
+          <p><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp;FA</p>
+        </li>
+
+        <li id="sol" onclick="jsNota(this,261.626)" class="white e">
+          <p><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp;SOL</p>
+        </li>
+
+        <li id="sol#" onclick="jsNota(this,277.183)" class="black ds">
+          <p style="color: azure; font-size: small;"><br><br><br><br>SOL#</p>
+        </li>
+
+        <li id="la" onclick="jsNota(this,293.665)" class="white d">
+          <p><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp;LA</p>
+        </li>
+
+        <li id="la#" onclick="jsNota(this,311.127)" class="black cs">
+          <p style="color: azure; font-size: small;"><br><br><br><br>&nbsp;LA#</p>
+        </li>
+
+        <li id="si" onclick="jsNota(this,329.628)" class="white c">
+          <p><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp;SI</p>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+
+
   <div class="content-buttons">
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">
       Send
