@@ -43,25 +43,23 @@ indexCtrl.registro = async (req, res) => {
     genero,
   } = req.body;
 
-
-
   if (password != verifypass) {
-    errors.push({ text: 'Las contraseñas no coinciden.' });
+    errors.push({ text: "Las contraseñas no coinciden." });
   }
 
   const emailUser = await User.findOne({ email: email });
   if (emailUser) {
-    errors.push({ text: 'Su email ya se encuentra registrado' });
+    errors.push({ text: "Su email ya se encuentra registrado" });
   }
 
   const cedulaUser = await User.findOne({ cedula: cedula });
   if (cedulaUser) {
-    errors.push({ text: 'Su cedula ya se encuentra registrado' });
+    errors.push({ text: "Su cedula ya se encuentra registrado" });
   }
 
   const nicknameUser = await User.findOne({ nickname: nickname });
   if (nicknameUser) {
-    errors.push({ text: 'Su nickname ya se encuentra registrado' });
+    errors.push({ text: "Su nickname ya se encuentra registrado" });
   }
 
   if (errors.length > 0) {
@@ -77,7 +75,7 @@ indexCtrl.registro = async (req, res) => {
       provincia,
       canton,
       cedula,
-      genero
+      genero,
     });
   } else {
     const usuarioNuevo = new User({
@@ -99,8 +97,9 @@ indexCtrl.registro = async (req, res) => {
     // encriptamos la contraseña del usuario
     usuarioNuevo.password = await usuarioNuevo.encryptPWD(password);
     usuarioNuevo.verifypass = usuarioNuevo.password;
-    await usuarioNuevo.save();
+    // await usuarioNuevo.save();
     console.log(usuarioNuevo);
+    console.log(req.body);
     mensajes.push({ text: "Usuario registrado exitosamente" });
     res.render("login", { mensajes });
   }
