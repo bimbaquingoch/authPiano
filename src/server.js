@@ -67,12 +67,6 @@ app.use(flash());
 // para que se pueda mover
 app.use(require("./routes/index.routes"));
 
-// variables globales
-app.use((req, res, next) => {
-  res.locals.error_msg = req.flash("error_msg");
-  next();
-});
-
 // archivos estaticos (html y css de public)
 // le decimos a NODEJS, aqui esta la carpeta public
 // donde puede buscar nuestros estilos CSS

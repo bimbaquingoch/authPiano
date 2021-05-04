@@ -24,7 +24,7 @@ indexCtrl.renderLogin = (req, res) => {
 // obtengo la informacion de
 // los formularios de registro y login
 indexCtrl.registro = async (req, res) => {
-  const errors = [];
+  const mensajes = [];
   const {
     nombre,
     apellido,
@@ -43,18 +43,18 @@ indexCtrl.registro = async (req, res) => {
   } = req.body;
 
   if (password != verifypass) {
-    errors.push({ text: "Las contraseñas no coinciden" });
+    mensajes.push({ text: "Las contraseñas no coinciden" });
   }
 
   if (password.length < 5) {
-    errors.push({
+    mensajes.push({
       text: "La contraseña es muy corta! prueba con más de 8 caracteres",
     });
   }
 
-  if (errors.length > 0) {
+  if (mensajes.length > 0) {
     res.render("index", {
-      errors,
+      mensajes,
       nombre,
       apellido,
       nickname,
@@ -71,11 +71,22 @@ indexCtrl.registro = async (req, res) => {
     const nickUser = await User.findOne({ nickname: nickname });
     //si se encontro un correo
     if (emailUser) {
-      errors.push({ text: "Ya existe un usuario con este correo" });
-      res.render("login", { errors });
+      mensajes.push({ text: "Ya existe un usuario con este correo" });
+      res.render("login", { mensajes });
     } else if (nickUser) {
-      errors.push({ text: "Ya existe un usuario con este nickname" });
-      res.render("login", { errors });
+      mensajes.push({ text: "Ya existe un usuario con este nickname" });
+      res.render("index", {
+        mensajes,
+        nombre,
+        apellido,
+        email,
+        estCivil,
+        phone,
+        age,
+        provincia,
+        ciudad,
+        cedula,
+      });
     } else {
       const usuarioNuevo = new User({
         nombre,
@@ -93,10 +104,13 @@ indexCtrl.registro = async (req, res) => {
         cedula,
         genero,
       });
+      // encriptamos la contraseña del usuario
+      usuarioNuevo.password = await usuarioNuevo.encryptPWD(password);
+      usuarioNuevo.verifypass = usuarioNuevo.password;
       await usuarioNuevo.save();
       console.log(usuarioNuevo);
-      errors.push({ text: "Usuario registrado exitosamente" });
-      res.render("login", { errors });
+      mensajes.push({ text: "Usuario registrado exitosamente" });
+      res.render("login", { mensajes });
     }
   }
 };
