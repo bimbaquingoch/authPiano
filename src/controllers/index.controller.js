@@ -44,7 +44,11 @@ indexCtrl.registro = async (req, res) => {
     nota1,
     nota2,
     nota3,
-    nota4
+    nota4,
+    valor0,
+    valor1,
+    valor2,
+    valor3
   } = req.body;
 
   if (password != verifypass) {
@@ -65,13 +69,27 @@ indexCtrl.registro = async (req, res) => {
   if (nicknameUser) {
     errors.push({ text: "Su nickname ya se encuentra registrado" });
   }
-
+  var credencial = {};
   if (nota1 && nota2 && nota3 && nota4) {
-    
-  console.log(nota1);
-  console.log(nota2);
-  console.log(nota3);
-  console.log(nota4);
+    credencial = {
+      "c1": {
+        "id": valor0,
+        "nota": nota1
+      },
+      "c2": {
+        "id": valor1,
+        "nota": nota2
+      },
+      "c3": {
+        "id": valor2,
+        "nota": nota3
+      },
+      "c4": {
+        "id": valor3,
+        "nota": nota4
+      }
+    }
+    console.log(credencial);
 
   } else {
     errors.push({ text: 'Una o varias notas no han sido seleccionadas' });
@@ -84,13 +102,10 @@ indexCtrl.registro = async (req, res) => {
       apellido,
       nickname,
       email,
-      estCivil,
       phone,
       age,
-      provincia,
-      canton,
       cedula,
-      genero,
+      genero
     });
   } else {
     const usuarioNuevo = new User({
@@ -108,12 +123,12 @@ indexCtrl.registro = async (req, res) => {
       img,
       cedula,
       genero,
+      credencial
     });
     // encriptamos la contraseña del usuario
     usuarioNuevo.password = await usuarioNuevo.encryptPWD(password);
     usuarioNuevo.verifypass = usuarioNuevo.password;
-    // await usuarioNuevo.save();
-    console.log(usuarioNuevo);
+    await usuarioNuevo.save();
     console.log(req.body);
     mensajes.push({ text: "Usuario registrado exitosamente" });
     res.render("login", { mensajes });

@@ -17,65 +17,69 @@ const userSchema = new Schema(
   {
     nombre: {
       type: String,
-      required: [true, "El nombre es obligatorio"],
+      required: [true, "El nombre es obligatorio"]
     },
     apellido: {
       type: String,
-      required: [true, "El apelledio es obligatorio"],
+      required: [true, "El apelledio es obligatorio"]
     },
     nickname: {
       type: String,
       required: [true, "nickname es obligatorio"],
-      unique: true,
+      unique: true
     },
     email: {
       type: String,
       required: [true, "El correo es obligatorio"],
-      unique: true,
+      unique: true
     },
     password: {
       type: String,
-      require: true,
+      require: true
     },
     verifypass: {
       type: String,
-      require: true,
+      require: true
     },
     estCivil: {
       type: String,
-      require: true,
+      require: true
     },
     phone: {
       type: String,
-      require: true,
+      require: true
       //unique: true,
     },
     age: {
       type: Date,
-      require: true,
+      require: true
     },
     provincia: {
       type: String,
-      required: true,
+      required: true
     },
     canton: {
       type: String,
-      require: true,
+      require: true
     },
     img: {
-      type: String,
+      type: String
     },
     cedula: {
       type: Number,
-      required: [true, "Su cedula es obligatoria"],
+      required: [true, "Su cedula es obligatoria"]
     },
     genero: {
       type: String,
-      required: [true, "Seleccione un campo"],
+      required: [true, "Seleccione un campo"]
     },
+    credencial:{
+      type: Object,
+      required:true
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 
