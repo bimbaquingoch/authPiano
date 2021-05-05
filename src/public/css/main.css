@@ -100,21 +100,37 @@
 estilos Teclado piano
 */
 
+.content-piano {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light);
+  margin: 20px auto;
+  justify-content: center;
+  border-radius: 1em;
+  align-items: center;
+}
 
+.content-piano--teclas ul li .nota-musical-b {
+  display: flex;
+  justify-content: center;
+  margin-top: 130px;
+}
 
+.content-piano--teclas ul li .nota-musical-n {
+  color: var(--light);
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
 
 #piano {
-  
-  height: 14.875em;
-  width: 20em;
-  margin: 5em auto;
-  padding: 1em 0 0 1em;
-  position: relative;
-  border: 1px solid #000000;
+  height: 100%;
+  width: 100%;
+  border: none;
   border-radius: 1em;
-  background: -webkit-gradient(linear, right bottom, left top, color-stop(0%, rgba(255, 255, 255, 0.3)), color-stop(100%, rgba(0, 0, 0, 0)));
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(0, 0, 0, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
-  
+  padding-left: 0;
+  box-shadow: 0 4px 8px var(--info);
 }
 
 li {
@@ -123,16 +139,19 @@ li {
   list-style: none;
   position: relative;
   float: left;
+  margin-bottom: 0;
 }
 
-ul .white {
+.white {
+  min-height: 100px;
   height: 11em;
-  width: 2.6em;
+  min-width: 2.4em;
   z-index: 1;
   border-left: 1px solid rgb(0, 0, 0);
   border-bottom: 1px solid rgb(0, 0, 0);
   border-radius: 0 0 5px 5px;
-  box-shadow: -1px 0 0 rgba(0, 0, 0, 0.8) inset, 0 0 5px rgb(0, 0, 0) inset, 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 0 0 rgba(0, 0, 0, 0.8) inset, 0 0 5px rgb(0, 0, 0) inset,
+    0 0 3px rgba(0, 0, 0, 0.2);
   background: linear-gradient(top, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 100%);
 }
 
@@ -140,27 +159,34 @@ ul .white:active {
   border-top: 1px solid #777;
   border-left: 1px solid #999;
   border-bottom: 1px solid #999;
-  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1) inset, -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1) inset,
+    -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
   background: linear-gradient(top, #fff 0%, #e9e9e9 100%);
 }
 
 .black {
-  height: 8em;
+  min-height: 80px;
   width: 1.9em;
   margin: 0 0 0 -1em;
   z-index: 2;
   border: 1px solid #000;
   border-radius: 0 0 3px 3px;
-  box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset,
+    0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.5);
   background: linear-gradient(45deg, #222 0%, #555 100%);
 }
 
 .black:active {
-  box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset,
+    0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
   background: linear-gradient(left, #444 0%, #222 100%);
 }
 
-.a, .g, .f, .d, .c {
+.a,
+.g,
+.f,
+.d,
+.c {
   margin: 0 0 0 -1em;
 }
 
@@ -171,8 +197,11 @@ ul li:first-child {
 ul li:last-child {
   border-radius: 0 5px 5px 5px;
 }
+<<<<<<< HEAD
 
 tr,th{
   text-align: center; 
   vertical-align: middle;
 }
+=======
+>>>>>>> 9382b48f73f118b24d8969f1c6027b93fc3398f0
