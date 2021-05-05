@@ -1,6 +1,8 @@
 var context = new AudioContext();
 var notas = [];
-var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var miarray = [1,2,3,4,5,6,7,8,9];
+miarray = miarray.sort(function() {return Math.random() - 0.5});
+
 //var teclas = 27;
 function jsNota(obj, frecuencia) {
   var o = context.createOscillator();
@@ -13,53 +15,39 @@ function jsNota(obj, frecuencia) {
   g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 1.5);
 
   var nota = obj.id;
+  notas.push(nota)
+
   if (nota == "do") {
-    console.log("Es dooo");
     document.getElementById("re").style.pointerEvents = "none";
+    document.getElementById("re").style.background = "#FFB2B2";
   }
-  
+
   if (nota == "re") {
-    console.log("Es dooo");
     document.getElementById("mi").style.pointerEvents = "none";
+    document.getElementById("mi").style.background = "#FFB2B2";
   }
 
   if (nota == "mi") {
-    console.log("Es dooo");
     document.getElementById("fa").style.pointerEvents = "none";
-  }
-
-  if (nota == "fa") {
-    console.log("Es dooo");
-    document.getElementById("sol").style.pointerEvents = "none";
+    document.getElementById("fa").style.background = "#FFB2B2";
+    document.getElementById("re").style.pointerEvents = "all";
+    document.getElementById("re").style.background = "#FFFFFF";
   }
 
   if (nota == "sol") {
-    console.log("Es dooo");
     document.getElementById("la").style.pointerEvents = "none";
+    document.getElementById("la").style.background = "#FFB2B2";
   }
 
-  if (nota == "la") {
-    console.log("Es dooo");
-    document.getElementById("si").style.pointerEvents = "none";
-  }
-
-
-  var cont = 0;
-  notas.push(nota)
-
-  var valor = "valor" + cont;
-  document.getElementById(valor).innerHTML = num;
-  cont = cont + 1;
   if (notas.length <= 4) {
-    var num = Math.floor(Math.random() * nums.length);
-    let pos = nums.indexOf('num');
-    nums.splice(pos, 1);
+
     for (var i = 0; i < notas.length; i++) {
       var nota = "nota" + (i + 1);
+      var valor = "valor" + i;
       document.getElementById(nota).value = notas[i];
+      document.getElementById(valor).value = miarray[i];
     }
-    //teclas = teclas - 1;
-    obj.style.visibility = "hidden";
-    //piano.style.width = teclas+"em";
+    obj.style.pointerEvents = "none";
+    obj.style.background = "#CFE2CA";
   }
 }

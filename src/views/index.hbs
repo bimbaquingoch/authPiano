@@ -1,227 +1,152 @@
 <form class="formulario" action='/' method="POST">
   <h1 class='animate__fadeInUp'>Registro</h1>
 
-    <input 
-      type="text" 
-      class="form-control animate__fadeInUp" 
-      id="nombre" 
-      placeholder="NOMBRE" 
-      name="nombre"
-      autocomplete="name" 
-      value="{{nombre}}" 
-      required />
+  <input type="text" class="form-control animate__fadeInUp" id="nombre" placeholder="NOMBRE" name="nombre"
+    autocomplete="name" value="{{nombre}}" required />
 
-    <input 
-      type="text" 
-      class="form-control animate__fadeInUp" 
-      id="apellido" 
-      placeholder="APELLIDO" 
-      name="apellido"
-      autocomplete="lastname" 
-      value="{{apellido}}" 
-      required />
+  <input type="text" class="form-control animate__fadeInUp" id="apellido" placeholder="APELLIDO" name="apellido"
+    autocomplete="lastname" value="{{apellido}}" required />
 
-      <input 
-      type="text" 
-      class="form-control animate__fadeInUp" 
-      id="nick" 
-      placeholder="NICK NAME" 
-      name="nickname"
-      value="{{nickname}}" 
-      required />
+  <input type="text" class="form-control animate__fadeInUp" id="nick" placeholder="NICK NAME" name="nickname"
+    value="{{nickname}}" required />
 
-      <input 
-      type="email" 
-      class="form-control animate__fadeInUp" 
-      id="correo" 
-      placeholder="CORREO" 
-      name="email"
-      autocomplete='email' 
-      value="{{email}}" 
-      required />
+  <input type="email" class="form-control animate__fadeInUp" id="correo" placeholder="CORREO" name="email"
+    autocomplete='email' value="{{email}}" required />
 
-      <input 
-      type="password" 
-      class="form-control animate__fadeInUp" 
-      id="password" 
-      placeholder="CONTRASEÑA" 
-      name="password"
-      required />
+  <input type="password" class="form-control animate__fadeInUp" id="password" placeholder="CONTRASEÑA" name="password"
+    required />
 
-      <input 
-      type="password" 
-      class="form-control animate__fadeInUp" 
-      id="verificarPassword"
-      placeholder="VERIFICAR PASSWORD" 
-      name="verifypass" 
-      required />
+  <input type="password" class="form-control animate__fadeInUp" id="verificarPassword" placeholder="VERIFICAR PASSWORD"
+    name="verifypass" required />
 
-      <select 
-      class="form-control animate__fadeInUp" 
-      name="estCivil" 
-      id="estCivil" 
-      value="{{estCivil}}"
-      required>
-        <option value="{{estCivil}}">ESTADO CIVIL</option>
-    </select>
+  <select class="form-control animate__fadeInUp" name="estCivil" id="estCivil" value="{{estCivil}}" required>
+    <option value="{{estCivil}}">ESTADO CIVIL</option>
+  </select>
 
-    <script type="text/javascript">
-      function cargarEstado() {
-        var array = ["Soltero", "Casado", "Divorciado", "Viudo", "Unión de hecho"];
-        array.sort();
-        addOptions("estCivil", array);
+  <script type="text/javascript">
+    function cargarEstado() {
+      var array = ["Soltero", "Casado", "Divorciado", "Viudo", "Unión de hecho"];
+      array.sort();
+      addOptions("estCivil", array);
+    }
+
+
+    //Función para agregar opciones a un <select>.
+    function addOptions(domElement, array) {
+      var selector = document.getElementsByName(domElement)[0];
+      for (estCivil in array) {
+        let opcion = document.createElement("option");
+        opcion.text = array[estCivil];
+        // Añadimos un value a los option para hacer mas facil escoger los pueblos
+        // opcion.value = array[estCivil]
+        selector.add(opcion);
+      }
+    }
+    cargarEstado();
+  </script>
+
+
+  <input type="tel" class="form-control animate__fadeInUp" id="telefono" placeholder="TELEFONO" name="phone"
+    value="{{phone}}" required />
+
+  <input type="date" class="form-control animate__fadeInUp" id="Fecha" placeholder="FECHA DE NACIMIENTO" name="age"
+    value="{{age}}" required />
+
+  <select class="form-control animate__fadeInUp" name="provincia" id="provincia" onchange="cargarPueblos();" required>
+    <option value="">Seleccione una Provincia...</option>
+  </select>
+
+  <select class="form-control animate__fadeInUp" name="canton" id="canton" required>
+    <option value="">Seleccione un cantón...</option>
+  </select>
+
+  <script type="text/javascript">
+    function cargarProvincias() {
+      var array = ["Azuay", "Bolívar", "Cañar", "Carchi", "Chimborazo",
+        "Cotopaxi", "El Oro", "Esmeraldas", "Galápagos", "Guayas", "Imbabura",
+        "Loja", "Los Ríos", "Manabí", "Morona Santiago", "Napo", "Orellana",
+        "Pastaza", "Pichincha", "Santa Elena", "Santo Domingo de los Tsáchilas",
+        "Sucumbíos", "Tungurahua", "Zamora Chinchipe"
+      ];
+      array.sort();
+      addOptions("provincia", array);
+    }
+
+    //Función para agregar opciones a un <select>.
+    function addOptions(domElement, array) {
+      var selector = document.getElementsByName(domElement)[0];
+      for (provincia in array) {
+        var opcion = document.createElement("option");
+        opcion.text = array[provincia];
+        // Añadimos un value a los option para hacer mas facil escoger los pueblos
+        opcion.value = array[provincia]
+        selector.add(opcion);
+      }
+    }
+
+    function cargarPueblos() {
+      // Objeto de provincias con pueblos
+      var listaPueblos = {
+        azuay: ["Cuenca", "Chordeleg", "El Pan", "Girón", "Guachapala", "Gualaceo", "Nabón", "Oña", "Paute", "Pucará", "San Fernando", "Santa Isabel", "Sevilla de Oro", "Sígsig"],
+        bolívar: ["Guaranda", "Caluma", "Chillanes", "Chimbo", "Echeandía", "Las Naves", "San Miguel"],
+        cañar: ["Azogues", "Biblián", "Cañar", "Déleg", "El Tambo", "La Troncal", "Suscal"],
+        carchi: ["Tulcán", "Mira", "Espejo", "Montúfar", "San Pedro de Huaca", "Bolívar"],
+        chimborazo: ["Riobamba", "Alausí", "Chambo", "Chunchi", "Colta", "Cumandá", "Guamote", "Guano", "Pallatanga", "Penipe"],
+        cotopaxi: ["Pujili", "Salcedo", "La Mana", "Latacunga", "Pangua", "Saquisili", "Sigchos"],
+        eloro: ["Machala", "Arenillas", "Atahualpa", "Balsas", "Chilla", "El Guabo", "Huaquillas", "Marcabeli", "Pasaje", "Piñas", "Portovelo", "Santa Rosa", "Zaruma", "Las Lajas"],
+        esmeraldas: ["Esmeraldas", "Eloy Alfaro", "Muisne", "Quininde", "San Lorenzo", "Atacames", "Rioverde", "La Concordia"],
+        galápagos: ["San Cristobal", "Isabela", "Santa Cruz"],
+        guayas: ["Guayaquil", "Alfredo Baquerizo Moreno (Jujan)", "Balao", "Balzar", "Colimes", "Daule", "Duran", "El Empalme", "El Triunfo", "Milagro", "Naranjal", "Naranjito", "Palestina", "Pedro Carbo", "Samborondon",
+          "Santa Lucia", "Salitre (Urbina Jado)", "San Jacinto De Yaguachi", "Playas", "Simon Bolivar", "Coronel Marcelino Maridueña", "Lomas De Sargentillo", "Nobol", "General Antonio Elizalde", "Isidro Ayora"],
+        imbabura: ["Ibarra", "Antonio Ante", "Cotacachi", "Otavalo", "Pimampiro", "San Miguel De Urcuqui"],
+        loja: ["Loja", "Calvas", "Catamayo", "Celica", "Chaguarpamba", "Espindola", "Gonzanama", "Macara", "Paltas", "Puyango", "Saraguro", "Sozoranga", "Zapotillo", "Pindal", "Quilanga", "Olmedo"],
+        losríos: ["Babahoyo", "Baba", "Montalvo", "Puebloviejo", "Quevedo", "Urdaneta", "Ventanas", "Vinces", "Palenque", "Buena Fe", "Valencia", "Mocache", "Quinsaloma"],
+        manabí: ["Portoviejo", "Bolivar", "Chone", "El Carmen", "Flavio Alfaro", "Jipijapa", "Junin", "Manta", "Montecristi", "Pajan", "Pichincha", "Rocafuerte", "Santa Ana", "Sucre", "Tosagua", "24 De Mayo", "Pedernales", "Puerto Lopez", "Jama",
+          "Jaramijo", "San Vicente"],
+        moronasantiago: ["Morona", "Gualaquiza", "Limon Indanza", "Palora", "Santiago", "Sucua", "Huamboya", "San Juan Bosco", "Taisha", "Logroño", "Pablo Sexto", "Canton Tiwintza"],
+        napo: ["Tena", "Archidona", "El Chaco", "Quijos", "Carlos Julio Arosemena Tola"],
+        orellana: ["Orellana", "Aguarico", "La Joya De Los Sachas", "Loreto"],
+        pastaza: ["Pastaza", "Mera", "Santa Clara", "Arajuno"],
+        pichincha: ["Quito", "Cayambe", "Mejia", "Pedro Moncayo", "Rumiñahui", "San Miguel De Los Bancos", "Pedro Vicente Maldonado", "Puerto Quito"],
+        santaelena: ["Santa Elena", "La Libertad", "Salinas"],
+        santodomingodelostsáchilas: ["Santo Domingo"],
+        sucumbíos: ["Lago Agrio", "Gonzalo Pizarro", "Putumayo", "Shushufindi", "Sucumbios", "Cascales", "Cuyabeno"],
+        tungurahua: ["Ambato", "Baños De Agua Santa", "Cevallos", "Mocha", "Patate", "Quero", "San Pedro De Pelileo", "Santiago De Pillaro", "Tisaleo"],
+        zamorachinchipe: ["Zamora", "Chinchipe", "Nangaritza", "Yacuambi", "Yantzaza (Yanzatza)", "El Pangui", "Centinela Del Condor", "Palanda", "Paquisha"]
       }
 
+      var provincias = document.getElementById('provincia')
+      var cantones = document.getElementById('canton')
+      var provinciaSeleccionada = provincias.value
+      provinciaSeleccionada = provinciaSeleccionada.replace(/ /g, "")
+      provinciaSeleccionada = provinciaSeleccionada.toLowerCase()
+      console.log(provinciaSeleccionada)
 
-      //Función para agregar opciones a un <select>.
-      function addOptions(domElement, array) {
-        var selector = document.getElementsByName(domElement)[0];
-        for (estCivil in array) {
-          let opcion = document.createElement("option");
-          opcion.text = array[estCivil];
-          // Añadimos un value a los option para hacer mas facil escoger los pueblos
-          // opcion.value = array[estCivil]
-          selector.add(opcion);
-        }
-      }
-      cargarEstado();
-    </script>
+      // Se limpian los pueblos
+      cantones.innerHTML = '<option value="">Seleccione un Cantón...</option>'
 
+      if (provinciaSeleccionada !== '') {
+        // Se seleccionan los pueblos y se valoran
+        provinciaSeleccionada = listaPueblos[provinciaSeleccionada]
+        provinciaSeleccionada.sort()
 
-    <input 
-       type="tel" 
-       class="form-control animate__fadeInUp" 
-       id="telefono" 
-       placeholder="TELEFONO" 
-       name="phone"
-       value="{{phone}}" 
-       required />
-
-    <input 
-       type="date" 
-       class="form-control animate__fadeInUp" 
-       id="Fecha" 
-       placeholder="FECHA DE NACIMIENTO" 
-       name="age"
-       value="{{age}}" 
-       required />
-
-    <select 
-       class="form-control animate__fadeInUp" 
-       name="provincia" 
-       id="provincia" 
-       onchange="cargarPueblos();" 
-       required>
-      <option value="">Seleccione una Provincia...</option>
-    </select>
-
-    <select 
-       class="form-control animate__fadeInUp" 
-       name="canton" 
-       id="canton" 
-       required>
-      <option value="">Seleccione un cantón...</option>
-    </select>
-
-    <script type="text/javascript">
-      function cargarProvincias() {
-        var array = ["Azuay", "Bolívar", "Cañar", "Carchi", "Chimborazo",
-          "Cotopaxi", "El Oro", "Esmeraldas", "Galápagos", "Guayas", "Imbabura",
-          "Loja", "Los Ríos", "Manabí", "Morona Santiago", "Napo", "Orellana",
-          "Pastaza", "Pichincha", "Santa Elena", "Santo Domingo de los Tsáchilas",
-          "Sucumbíos", "Tungurahua", "Zamora Chinchipe"
-        ];
-        array.sort();
-        addOptions("provincia", array);
+        // Insertamos los pueblos
+        provinciaSeleccionada.forEach(function (canton) {
+          let opcion = document.createElement('option')
+          opcion.value = canton
+          opcion.text = canton
+          cantones.add(opcion)
+        });
       }
 
-      //Función para agregar opciones a un <select>.
-      function addOptions(domElement, array) {
-        var selector = document.getElementsByName(domElement)[0];
-        for (provincia in array) {
-          var opcion = document.createElement("option");
-          opcion.text = array[provincia];
-          // Añadimos un value a los option para hacer mas facil escoger los pueblos
-          opcion.value = array[provincia]
-          selector.add(opcion);
-        }
-      }
+    }
+    cargarProvincias();
+  </script>
 
-      function cargarPueblos() {
-        // Objeto de provincias con pueblos
-        var listaPueblos = {
-          azuay: ["Cuenca", "Chordeleg", "El Pan", "Girón", "Guachapala", "Gualaceo", "Nabón", "Oña", "Paute", "Pucará", "San Fernando", "Santa Isabel", "Sevilla de Oro", "Sígsig"],
-          bolívar: ["Guaranda", "Caluma", "Chillanes", "Chimbo", "Echeandía", "Las Naves", "San Miguel"],
-          cañar: ["Azogues", "Biblián", "Cañar", "Déleg", "El Tambo", "La Troncal", "Suscal"],
-          carchi: ["Tulcán", "Mira", "Espejo", "Montúfar", "San Pedro de Huaca", "Bolívar"],
-          chimborazo: ["Riobamba", "Alausí", "Chambo", "Chunchi", "Colta", "Cumandá", "Guamote", "Guano", "Pallatanga", "Penipe"],
-          cotopaxi: ["Pujili", "Salcedo", "La Mana", "Latacunga", "Pangua", "Saquisili", "Sigchos"],
-          eloro: ["Machala", "Arenillas", "Atahualpa", "Balsas", "Chilla", "El Guabo", "Huaquillas", "Marcabeli", "Pasaje", "Piñas", "Portovelo", "Santa Rosa", "Zaruma", "Las Lajas"],
-          esmeraldas: ["Esmeraldas", "Eloy Alfaro", "Muisne", "Quininde", "San Lorenzo", "Atacames", "Rioverde", "La Concordia"],
-          galápagos: ["San Cristobal", "Isabela", "Santa Cruz"],
-          guayas: ["Guayaquil", "Alfredo Baquerizo Moreno (Jujan)", "Balao", "Balzar", "Colimes", "Daule", "Duran", "El Empalme", "El Triunfo", "Milagro", "Naranjal", "Naranjito", "Palestina", "Pedro Carbo", "Samborondon",
-            "Santa Lucia", "Salitre (Urbina Jado)", "San Jacinto De Yaguachi", "Playas", "Simon Bolivar", "Coronel Marcelino Maridueña", "Lomas De Sargentillo", "Nobol", "General Antonio Elizalde", "Isidro Ayora"],
-          imbabura: ["Ibarra", "Antonio Ante", "Cotacachi", "Otavalo", "Pimampiro", "San Miguel De Urcuqui"],
-          loja: ["Loja", "Calvas", "Catamayo", "Celica", "Chaguarpamba", "Espindola", "Gonzanama", "Macara", "Paltas", "Puyango", "Saraguro", "Sozoranga", "Zapotillo", "Pindal", "Quilanga", "Olmedo"],
-          losríos: ["Babahoyo", "Baba", "Montalvo", "Puebloviejo", "Quevedo", "Urdaneta", "Ventanas", "Vinces", "Palenque", "Buena Fe", "Valencia", "Mocache", "Quinsaloma"],
-          manabí: ["Portoviejo", "Bolivar", "Chone", "El Carmen", "Flavio Alfaro", "Jipijapa", "Junin", "Manta", "Montecristi", "Pajan", "Pichincha", "Rocafuerte", "Santa Ana", "Sucre", "Tosagua", "24 De Mayo", "Pedernales", "Puerto Lopez", "Jama",
-            "Jaramijo", "San Vicente"],
-          moronasantiago: ["Morona", "Gualaquiza", "Limon Indanza", "Palora", "Santiago", "Sucua", "Huamboya", "San Juan Bosco", "Taisha", "Logroño", "Pablo Sexto", "Canton Tiwintza"],
-          napo: ["Tena", "Archidona", "El Chaco", "Quijos", "Carlos Julio Arosemena Tola"],
-          orellana: ["Orellana", "Aguarico", "La Joya De Los Sachas", "Loreto"],
-          pastaza: ["Pastaza", "Mera", "Santa Clara", "Arajuno"],
-          pichincha: ["Quito", "Cayambe", "Mejia", "Pedro Moncayo", "Rumiñahui", "San Miguel De Los Bancos", "Pedro Vicente Maldonado", "Puerto Quito"],
-          santaelena: ["Santa Elena", "La Libertad", "Salinas"],
-          santodomingodelostsáchilas: ["Santo Domingo"],
-          sucumbíos: ["Lago Agrio", "Gonzalo Pizarro", "Putumayo", "Shushufindi", "Sucumbios", "Cascales", "Cuyabeno"],
-          tungurahua: ["Ambato", "Baños De Agua Santa", "Cevallos", "Mocha", "Patate", "Quero", "San Pedro De Pelileo", "Santiago De Pillaro", "Tisaleo"],
-          zamorachinchipe: ["Zamora", "Chinchipe", "Nangaritza", "Yacuambi", "Yantzaza (Yanzatza)", "El Pangui", "Centinela Del Condor", "Palanda", "Paquisha"]
-        }
+  <input type="file" class="load-img animate__fadeInUp" id="file" name='img' accept="image/*" required />
 
-        var provincias = document.getElementById('provincia')
-        var cantones = document.getElementById('canton')
-        var provinciaSeleccionada = provincias.value
-        provinciaSeleccionada = provinciaSeleccionada.replace(/ /g, "")
-        provinciaSeleccionada = provinciaSeleccionada.toLowerCase()
-        console.log(provinciaSeleccionada)
-
-        // Se limpian los pueblos
-        cantones.innerHTML = '<option value="">Seleccione un Cantón...</option>'
-
-        if (provinciaSeleccionada !== '') {
-          // Se seleccionan los pueblos y se valoran
-          provinciaSeleccionada = listaPueblos[provinciaSeleccionada]
-          provinciaSeleccionada.sort()
-
-          // Insertamos los pueblos
-          provinciaSeleccionada.forEach(function (canton) {
-            let opcion = document.createElement('option')
-            opcion.value = canton
-            opcion.text = canton
-            cantones.add(opcion)
-          });
-        }
-
-      }
-      cargarProvincias();
-    </script>
-
-    <input 
-       type="file" 
-       class="load-img animate__fadeInUp" 
-       id="file" 
-       name='img' 
-       accept="image/*" 
-       required />
-
-    <input 
-       type="text" 
-       class="form-control animate__fadeInUp" 
-       id="numCedula" 
-       placeholder="NUMERO DE CEDULA"
-       name="cedula" 
-       value="{{cedula}}" 
-       required />
+  <input type="text" class="form-control animate__fadeInUp" id="numCedula" placeholder="NUMERO DE CEDULA" name="cedula"
+    value="{{cedula}}" required />
 
 
   <label class='genero animate__fadeInUp' for="">GENERO:</label>
@@ -240,23 +165,31 @@
     <table class="table">
       <thead>
         <tr>
-          <th id="valor0"></th>
-          <th id="valor1"></th>
-          <th id="valor2"></th>
-          <th id="valor3"></th>
+          <th>
+            <input type="text" id="valor0" name="valor0" readonly=readonly value="" size="1" />
+          </th>
+          <th>
+            <input type="text" id="valor1" name="valor1" readonly=readonly value="" size="1" />
+          </th>
+          <th>
+            <input type="text" id="valor2" name="valor2" readonly=readonly value="" size="1" />
+          </th>
+          <th>
+            <input type="text" id="valor3" name="valor3" readonly=readonly value="" size="1" />
+          </th>
         </tr>
         <tr>
           <th>
-            <input type="text" id="nota1" name="nota1" placeholder="&#x266b" readonly=readonly value="" size="1"/>
+            <input type="text" id="nota1" name="nota1" placeholder="&#x266b" readonly=readonly value="" size="1" />
           </th>
           <th>
-            <input type="text" id="nota2" name="nota2" placeholder="&#x266b" readonly=readonly value="" size="1"/>
+            <input type="text" id="nota2" name="nota2" placeholder="&#x266b" readonly=readonly value="" size="1" />
           </th>
           <th>
-            <input type="text" id="nota3" name="nota3" placeholder="&#x266b" readonly=readonly value="" size="1"/>
+            <input type="text" id="nota3" name="nota3" placeholder="&#x266b" readonly=readonly value="" size="1" />
           </th>
           <th>
-            <input type="text" id="nota4" name="nota4" placeholder="&#x266b" readonly=readonly value="" size="1"/>
+            <input type="text" id="nota4" name="nota4" placeholder="&#x266b" readonly=readonly value="" size="1" />
           </th>
         </tr>
       </thead>
