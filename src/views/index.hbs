@@ -173,7 +173,7 @@
         cantones.innerHTML = '<option value="">Seleccione un Cantón...</option>'
 
         if (provinciaSeleccionada !== '') {
-          // Se seleccionan los pueblos y se ordenan
+          // Se seleccionan los pueblos y se valoran
           provinciaSeleccionada = listaPueblos[provinciaSeleccionada]
           provinciaSeleccionada.sort()
 
@@ -221,16 +221,24 @@
     <table class="justify-content-center table">
       <thead>
         <tr>
-          <th id="orden0"></th>
-          <th id="orden1"></th>
-          <th id="orden2"></th>
-          <th id="orden3"></th>
+          <th id="valor0"></th>
+          <th id="valor1"></th>
+          <th id="valor2"></th>
+          <th id="valor3"></th>
         </tr>
         <tr>
-          <th id="nota0"></th>
-          <th id="nota1"></th>
-          <th id="nota2"></th>
-          <th id="nota3"></th>
+          <th>
+            <input type="text" id="nota1" name="nota1" placeholder="&#x266b" readonly=readonly value="" size="1"/>
+          </th>
+          <th>
+            <input type="text" id="nota2" name="nota2" placeholder="&#x266b" readonly=readonly value="" size="1"/>
+          </th>
+          <th>
+            <input type="text" id="nota3" name="nota3" placeholder="&#x266b" readonly=readonly value="" size="1"/>
+          </th>
+          <th>
+            <input type="text" id="nota4" name="nota4" placeholder="&#x266b" readonly=readonly value="" size="1"/>
+          </th>
         </tr>
       </thead>
     </table>
@@ -266,7 +274,7 @@
         </li>
 
         <li id="sol" onclick="jsNota(this,261.626)" class="white e">
-          <p><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp;SOL</p>
+          <p><br><br><br><br><br><br>&nbsp;&nbsp;SOL</p>
         </li>
 
         <li id="sol#" onclick="jsNota(this,277.183)" class="black ds">
@@ -289,9 +297,6 @@
     </div>
 
   </div>
-
-
-
   <div class="content-buttons">
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">
       Send

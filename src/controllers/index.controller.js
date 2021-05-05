@@ -41,6 +41,10 @@ indexCtrl.registro = async (req, res) => {
     img,
     cedula,
     genero,
+    nota1,
+    nota2,
+    nota3,
+    nota4
   } = req.body;
 
 
@@ -62,6 +66,17 @@ indexCtrl.registro = async (req, res) => {
   const nicknameUser = await User.findOne({ nickname: nickname });
   if (nicknameUser) {
     errors.push({ text: 'Su nickname ya se encuentra registrado' });
+  }
+
+  if (nota1 && nota2 && nota3 && nota4) {
+    
+  console.log(nota1);
+  console.log(nota2);
+  console.log(nota3);
+  console.log(nota4);
+
+  } else {
+    errors.push({ text: 'Una o varias notas no han sido seleccionadas' });
   }
 
   if (errors.length > 0) {
