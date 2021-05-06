@@ -151,10 +151,18 @@ indexCtrl.authPage = (req, res) => {
   res.render("authPage");
 };
 
+// pagina de bienvanida
+
+indexCtrl.welcome = (req, res) => {
+  res.render("welcome");
+};
+
 // aun no esta programada para cerra sesion
 // esto esta pendiente
 indexCtrl.cerrarSesion = (req, res) => {
   req.logout();
+  mensajes.push({ text: "Has cerrrado Sesion" });
+  res.render("login", { mensajes });
 };
 
 // exportamos todo el objeto indexCtrl

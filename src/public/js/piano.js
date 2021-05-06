@@ -32,8 +32,8 @@ function jsNota(obj, frecuencia) {
   if (nota == "mi") {
     document.getElementById("fa").style.pointerEvents = "none";
     document.getElementById("fa").style.background = "#FFB2B2";
-    document.getElementById("re").style.pointerEvents = "all";
-    document.getElementById("re").style.background = "#FFFFFF";
+    // document.getElementById("re").style.pointerEvents = "all";
+    // document.getElementById("re").style.background = "#FFFFFF";
   }
 
   if (nota == "fa") {
