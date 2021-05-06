@@ -1,7 +1,9 @@
 var context = new AudioContext();
 var notas = [];
-var miarray = [1,2,3,4,5,6,7,8,9];
-miarray = miarray.sort(function() {return Math.random() - 0.5});
+var miarray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+miarray = miarray.sort(function () {
+  return Math.random() - 0.5;
+});
 
 //var teclas = 27;
 function jsNota(obj, frecuencia) {
@@ -15,7 +17,7 @@ function jsNota(obj, frecuencia) {
   g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 1.5);
 
   var nota = obj.id;
-  notas.push(nota)
+  notas.push(nota);
 
   if (nota == "do") {
     document.getElementById("re").style.pointerEvents = "none";
@@ -34,13 +36,22 @@ function jsNota(obj, frecuencia) {
     document.getElementById("re").style.background = "#FFFFFF";
   }
 
+  if (nota == "fa") {
+    document.getElementById("sol").style.pointerEvents = "none";
+    document.getElementById("sol").style.background = "#FFB2B2";
+  }
+
   if (nota == "sol") {
     document.getElementById("la").style.pointerEvents = "none";
     document.getElementById("la").style.background = "#FFB2B2";
   }
 
-  if (notas.length <= 4) {
+  if (nota == "la") {
+    document.getElementById("si").style.pointerEvents = "none";
+    document.getElementById("si").style.background = "#FFB2B2";
+  }
 
+  if (notas.length <= 4) {
     for (var i = 0; i < notas.length; i++) {
       var nota = "nota" + (i + 1);
       var valor = "valor" + i;

@@ -6,10 +6,13 @@ const path = require("path");
 const flash = require("connect-flash");
 const session = require("express-session");
 const morgan = require("morgan");
+const passport = require("passport");
 
 // modulo APP
 // inicializacion del modulo de express
 const app = express();
+// llamamos al archivo passport, la configuracion
+require("./config/passport");
 
 // configuraciones
 
@@ -51,7 +54,6 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 
 // modulo que guarda mensajes en el servidor
-// ****** aun no probado ****
 app.use(
   session({
     secret: "secret",
@@ -59,8 +61,19 @@ app.use(
     saveUninitialized: true,
   })
 );
+// esto va despues de session porque lo necesita passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 // esto va con el mensaje del servidor
 app.use(flash());
+
+// el error de passport
+app.use((req, res, next) => {
+  res.locals.error = req.flash("error");
+  res.locals.user = req.user || null;
+  next();
+});
 
 // rutas
 // las rutas que definimos en los anteriores archivos

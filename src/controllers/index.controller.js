@@ -1,6 +1,9 @@
 // controlador de rutas
 const indexCtrl = {};
 
+// importar passport para las sesiones
+const passport = require("passport");
+
 // llamamos a la clase usuario para guardar
 // los datos que nos llega del formulario
 
@@ -16,16 +19,16 @@ indexCtrl.renderIndex = (req, res) => {
   res.render("index");
 };
 
-// renderiza la pagina principal, el login.hbs
+// renderiza el login.hbs
 indexCtrl.renderLogin = (req, res) => {
   res.render("login");
 };
 
 // obtengo la informacion de
 // los formularios de registro y login
+const mensajes = [];
+const errors = [];
 indexCtrl.registro = async (req, res) => {
-  const mensajes = [];
-  const errors = [];
   const {
     nombre,
     apellido,
@@ -48,7 +51,7 @@ indexCtrl.registro = async (req, res) => {
     valor0,
     valor1,
     valor2,
-    valor3
+    valor3,
   } = req.body;
 
   if (password != verifypass) {
@@ -72,27 +75,26 @@ indexCtrl.registro = async (req, res) => {
   var credencial = {};
   if (nota1 && nota2 && nota3 && nota4) {
     credencial = {
-      "c1": {
-        "id": valor0,
-        "nota": nota1
+      c1: {
+        id: valor0,
+        nota: nota1,
       },
-      "c2": {
-        "id": valor1,
-        "nota": nota2
+      c2: {
+        id: valor1,
+        nota: nota2,
       },
-      "c3": {
-        "id": valor2,
-        "nota": nota3
+      c3: {
+        id: valor2,
+        nota: nota3,
       },
-      "c4": {
-        "id": valor3,
-        "nota": nota4
-      }
-    }
+      c4: {
+        id: valor3,
+        nota: nota4,
+      },
+    };
     console.log(credencial);
-
   } else {
-    errors.push({ text: 'Una o varias notas no han sido seleccionadas' });
+    errors.push({ text: "Una o varias notas no han sido seleccionadas" });
   }
 
   if (errors.length > 0) {
@@ -105,7 +107,7 @@ indexCtrl.registro = async (req, res) => {
       phone,
       age,
       cedula,
-      genero
+      genero,
     });
   } else {
     const usuarioNuevo = new User({
@@ -123,7 +125,7 @@ indexCtrl.registro = async (req, res) => {
       img,
       cedula,
       genero,
-      credencial
+      credencial,
     });
     // encriptamos la contraseña del usuario
     usuarioNuevo.password = await usuarioNuevo.encryptPWD(password);
@@ -135,15 +137,24 @@ indexCtrl.registro = async (req, res) => {
   }
 };
 
-indexCtrl.login = (req, res) => {
-  console.log(req.body);
-  res.send("login exitoso");
+// valida una autenticacion
+indexCtrl.login = passport.authenticate("local", {
+  // si existe un error que se redirija a esta ruta
+  failureRedirect: "/login",
+  successRedirect: "/authPage",
+  failureFlash: true,
+});
+
+// renderiza la pagina de autenticacion
+
+indexCtrl.authPage = (req, res) => {
+  res.render("authPage");
 };
 
 // aun no esta programada para cerra sesion
 // esto esta pendiente
 indexCtrl.cerrarSesion = (req, res) => {
-  res.sed("adios user");
+  req.logout();
 };
 
 // exportamos todo el objeto indexCtrl

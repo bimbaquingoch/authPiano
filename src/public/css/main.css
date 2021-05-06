@@ -76,26 +76,6 @@
   background-color: var(--primary);
 }
 
-@media (min-width: 600px) {
-  .formulario {
-    width: 500px;
-    margin: 0 auto;
-    margin-bottom: 50px;
-  }
-  .content-nav {
-    background-color: var(--light);
-    padding-right: 30px;
-    justify-content: flex-end;
-    box-shadow: 0 2px 2px var(--info);
-    margin-bottom: 40px;
-  }
-
-  .animate__bounce:hover {
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-  }
-}
-
 /*
 estilos Teclado piano
 */
@@ -198,7 +178,42 @@ ul li:last-child {
   border-radius: 0 5px 5px 5px;
 }
 
-tr,th{
-  text-align: center; 
+tr,
+th {
+  text-align: center;
   vertical-align: middle;
+}
+
+@media (min-width: 600px) {
+  .formulario {
+    width: 500px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  .content-nav {
+    background-color: var(--light);
+    padding-right: 30px;
+    justify-content: flex-end;
+    box-shadow: 0 2px 2px var(--info);
+    margin-bottom: 40px;
+  }
+
+  .animate__bounce:hover {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .content-piano {
+    width: 70%;
+  }
+
+  .content-piano--teclas {
+    width: 100%;
+    margin-left: 15px;
+  }
+  .black {
+    width: 2em;
+  }
+  .white {
+    width: 3em;
+  }
 }
