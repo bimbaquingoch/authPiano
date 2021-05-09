@@ -75,22 +75,8 @@ indexCtrl.registro = async (req, res) => {
   var credencial = {};
   if (nota1 && nota2 && nota3 && nota4) {
     credencial = {
-      c1: {
-        id: valor0,
-        nota:nota1,
-      },
-      c2: {
-        id: valor1,
-        nota: nota2,
-      },
-      c3: {
-        id: valor2,
-        nota: nota3,
-      },
-      c4: {
-        id: valor3,
-        nota: nota4,
-      },
+      id: [valor0, valor1, valor2, valor3],
+      nota: [nota1, nota2, nota3, nota4]
     };
   } else {
     errors.push({ text: "Una o varias notas no han sido seleccionadas" });
@@ -130,12 +116,12 @@ indexCtrl.registro = async (req, res) => {
     usuarioNuevo.password = await usuarioNuevo.encryptPWD(password);
     usuarioNuevo.verifypass = usuarioNuevo.password;
 
-    for (const property in credencial) {
-      usuarioNuevo.credencial[property].nota= await usuarioNuevo.encryptPWD(credencial[property].nota)
+    // encriptamos los token musicales del usuario
+    for (var i = 0; i < credencial.nota.length; i++) {
+      usuarioNuevo.credencial.nota[i] = await usuarioNuevo.encryptPWD(credencial.nota[i])
     }
 
 
-    
     await usuarioNuevo.save();
     console.log(req.body);
     mensajes.push({ text: "Usuario registrado exitosamente" });
@@ -152,6 +138,10 @@ indexCtrl.login = passport.authenticate("local", {
 });
 
 // renderiza la pagina de autenticacion
+
+indexCtrl.authPage = (req, res) => {
+  res.render("authPage");
+};
 
 indexCtrl.authPage = (req, res) => {
   res.render("authPage");
