@@ -90,6 +90,7 @@ userSchema.methods.encryptPWD = async (password) => {
   return await bcrypt.hash(password, salt);
 };
 
+
 // comparara la contraseña que se ingresa
 userSchema.methods.comparaPWD = async function (password) {
   // si considen

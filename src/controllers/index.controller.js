@@ -77,7 +77,7 @@ indexCtrl.registro = async (req, res) => {
     credencial = {
       c1: {
         id: valor0,
-        nota: nota1,
+        nota:nota1,
       },
       c2: {
         id: valor1,
@@ -92,7 +92,6 @@ indexCtrl.registro = async (req, res) => {
         nota: nota4,
       },
     };
-    console.log(credencial);
   } else {
     errors.push({ text: "Una o varias notas no han sido seleccionadas" });
   }
@@ -130,6 +129,13 @@ indexCtrl.registro = async (req, res) => {
     // encriptamos la contraseña del usuario
     usuarioNuevo.password = await usuarioNuevo.encryptPWD(password);
     usuarioNuevo.verifypass = usuarioNuevo.password;
+
+    for (const property in credencial) {
+      usuarioNuevo.credencial[property].nota= await usuarioNuevo.encryptPWD(credencial[property].nota)
+    }
+
+
+    
     await usuarioNuevo.save();
     console.log(req.body);
     mensajes.push({ text: "Usuario registrado exitosamente" });
