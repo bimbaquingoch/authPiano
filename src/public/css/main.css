@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .content-nav {
   display: flex;
   justify-content: space-around;
@@ -7,17 +10,53 @@
   margin-bottom: 20px;
   align-items: center;
 }
+
 .formulario {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 0 20px;
   background-color: var(--light);
   border-radius: 30px;
   justify-content: center;
   align-items: center;
-  /* margin-top: 20px; */
+  margin-top: 20px;
   margin-bottom: 40px;
   box-shadow: 0 4px 8px var(--info);
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+.slides::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.slides::-webkit-scrollbar-thumb {
+  /* background: black; */
+  border-radius: 10px;
+}
+.slides::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slides > div {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+.form-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .formulario h1 {
@@ -45,6 +84,8 @@
 }
 
 .content-buttons {
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
   margin-bottom: 50px;
 }
@@ -58,6 +99,11 @@
   animation-duration: 2000ms;
   animation-delay: 1700ms;
   animation-iteration-count: 4;
+}
+
+.animate__shakeX {
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
 }
 
 .nav-link {
@@ -76,6 +122,30 @@
   background-color: var(--primary);
 }
 
+/* stilos instrucciones*/
+
+.intruccions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 80%;
+}
+
+.intruccions h4 {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.intruccions .imgInst {
+  align-self: center;
+  width: 60%;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
 /*
 estilos Teclado piano
 */
@@ -84,10 +154,25 @@ estilos Teclado piano
   display: flex;
   flex-direction: column;
   background-color: var(--light);
-  margin: 20px auto;
   justify-content: center;
   border-radius: 1em;
   align-items: center;
+  margin-right: 50px;
+  padding-left: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.content-piano h4 {
+  font-weight: bold;
+}
+
+.content-piano--teclas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: 100%;
 }
 
 .content-piano--teclas ul li .nota-musical-b {
@@ -96,21 +181,16 @@ estilos Teclado piano
   margin-top: 130px;
 }
 
+ul#piano.set.piano {
+  padding-left: 0;
+}
+
 .content-piano--teclas ul li .nota-musical-n {
   color: var(--light);
   font-size: small;
   display: flex;
   justify-content: center;
   margin-top: 80px;
-}
-
-#piano {
-  height: 100%;
-  width: 100%;
-  border: none;
-  border-radius: 1em;
-  padding-left: 0;
-  box-shadow: 0 4px 8px var(--info);
 }
 
 li {
@@ -203,17 +283,26 @@ th {
     animation-iteration-count: infinite;
   }
   .content-piano {
-    width: 70%;
+    width: 100%;
   }
 
   .content-piano--teclas {
     width: 100%;
     margin-left: 15px;
   }
+
   .black {
-    width: 2em;
+    width: 2.5em;
   }
   .white {
-    width: 3em;
+    width: 3.6em;
+  }
+
+  .a,
+  .g,
+  .f,
+  .d,
+  .c {
+    margin: 0 0 0 -1.5em;
   }
 }

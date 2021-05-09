@@ -5,6 +5,9 @@
   </main>
 
 <form class="formulario" action='/' method="POST">
+  <div class="slides">
+    
+<div class="form-content">
   <h1 class='animate__fadeInUp'>Registro</h1>
 
   <input type="text" class="form-control animate__fadeInUp" id="nombre" placeholder="NOMBRE" name="nombre"
@@ -164,9 +167,28 @@
     <input type="radio" id="otro" name="genero" value="otro" />
     <label for="otro">Otro</label>
   </div>
+<a href="#instPiano"><img class="animate__shakeX" src="https://img.icons8.com/office/40/000000/arrow.png"/></a>
+</div>
 
-  <div class="content-piano animate__fadeInUp">
-    <h5>Selecciona tus notas &#x266b</h5>
+
+  <div id="pianoContent" class="content-piano animate__fadeInUp">
+    <div id="instPiano" class="intruccions">
+      
+      <h4><img src="https://img.icons8.com/cotton/44/000000/piano.png"/>Piano Authentication</h4>
+      <p>Abajo encontrarás un piano, las notas serán 
+      el acceso a tu cuenta.
+      </p>
+      <p>Al presionar una nota se le asignará 
+      un número aleatorio entre 0 y 9.</p>
+
+      <p>Para finalizar tu registro debes seleccionar 4 notas y recordar que 
+      número corresponde a cada nota como muestra el ejemplo</p>
+
+      <img class="imgInst" src="/img/auth.png" alt="">
+
+    </div>
+
+    <h4>Selecciona tus notas &#x266b</h4>
 
     <table class="table">
       <thead>
@@ -255,12 +277,13 @@
 
     </div>
 
-  </div>
-  <div class="content-buttons">
-    <button type="submit" class="btn btn-primary" style="margin-left: 10px">
-      Send
-    </button>
+    <div class="content-buttons">
+      <button type="submit" class="btn btn-primary" >
+        Send
+      </button>
 
-    {{!-- <button class="btn btn-warning" style="margin-left: 10px">Borrar</button> --}}
+      {{!-- <button class="btn btn-warning" style="margin-left: 10px">Borrar</button> --}}
+    </div>
+  </div>
   </div>
 </form>
