@@ -21,23 +21,7 @@ passport.use("local",
       } else {
         // validar si la contraseña coincide con el correo
         const match = await user.comparaPWD(password);
-        if (match) {
-          const credencialId = await User.findOne({ email }, { "credencial.id": 1, "_id": 0 });
-          //credencialId=shuffle(credencialId)
-          var ids = new Array(4);
-          ids = credencialId['credencial']['id'];
-          
-          //Barajear o mezaclar los id de las notas
-        
-          for (var i = ids.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = ids[i];
-            ids[i] = ids[j];
-            ids[j] = temp;
-          }
-          console.log(ids)
-          //[ '9', '3', '2', '6' ]
-
+        if (match) {     
           return done(null, user);
         } else {
           return done(null, false, {

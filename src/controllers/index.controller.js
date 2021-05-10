@@ -117,10 +117,11 @@ indexCtrl.registro = async (req, res) => {
     usuarioNuevo.verifypass = usuarioNuevo.password;
 
     // encriptamos los token musicales del usuario
-    for (var i = 0; i < credencial.nota.length; i++) {
-      usuarioNuevo.credencial.nota[i] = await usuarioNuevo.encryptPWD(credencial.nota[i])
-    }
-
+    /*
+     for (var i = 0; i < credencial.nota.length; i++) {
+       usuarioNuevo.credencial.nota[i] = await usuarioNuevo.encryptPWD(credencial.nota[i])
+     }
+ */
 
     await usuarioNuevo.save();
     console.log(req.body);
@@ -137,14 +138,68 @@ indexCtrl.login = passport.authenticate("local", {
   failureFlash: true,
 });
 
-// renderiza la pagina de autenticacion
 
-indexCtrl.authPage = (req, res) => {
-  res.render("authPage");
+// renderiza la pagina de autenticacion
+indexCtrl.renderAuthPage = (req, res) => {
+  if (req.user) {
+    const user = req.user;
+    var ids = new Array(4);
+    //Obtenemos los ids de las notas musicales
+    ids = user.credencial.id;
+    //Barajear o mezaclar los id de las notas
+    for (var i = ids.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = ids[i];
+      ids[i] = ids[j];
+      ids[j] = temp;
+    }
+    res.render("authPage", { notasIds: ids, nickname: user.nickname });
+  } else {
+    res.render("index");
+  }
 };
 
-indexCtrl.authPage = (req, res) => {
-  res.render("authPage");
+indexCtrl.authPage = async (req, res) => {
+  const {
+    nota1, nota2, nota3, nota4,
+    valor0, valor1, valor2, valor3, nickname
+  } = req.body;
+  const errors = [];
+  var credencial = {};
+  if (nota1.length != 0 && nota2.length != 0 && nota3.length != 0 && nota4.length != 0) {
+    credencial = {
+      id: [valor0, valor1, valor2, valor3],
+      nota: [nota1, nota2, nota3, nota4]
+    };
+
+    const credencialUser = await User.findOne({ nickname: nickname }, { "credencial": 1, _id: 0 });
+    idNotasUser = credencialUser['credencial']['id'];
+    NotasUser = credencialUser['credencial']['nota'];
+    var i = 0;
+    var pos = 0;
+    bandera = true;
+    while (bandera) {
+      var pos = idNotasUser.indexOf(credencial.id[i]);
+      NotasUser[pos] == credencial.nota[i]
+      if ((NotasUser[pos] === credencial.nota[i]) == false) {
+        errors.push({ text: "Credenciales musicales Invalidas" });
+        bandera = false;
+      }
+      if (i > 4) {
+        bandera = false;
+      }
+      pos++;
+      i++;
+    }
+  }else{
+      errors.push({ text: "Una o varias notas no han sido seleccionadas" });
+  }
+
+  if (errors.length > 0) {
+    res.render("login", { errors });
+  } else {
+    res.render("welcome", { nickname: nickname });
+  }
 };
 
 // pagina de bienvanida

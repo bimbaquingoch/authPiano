@@ -264,9 +264,13 @@ th {
   vertical-align: middle;
 }
 
+#valor0,#valor1,#valor2,#valor3,#nota1,#nota2,#nota3,#nota4{
+  text-align: center;
+}
+
 @media (min-width: 600px) {
   .formulario {
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
     margin-bottom: 50px;
   }
@@ -295,7 +299,7 @@ th {
     width: 2.5em;
   }
   .white {
-    width: 3.6em;
+    width: 3.2em;
   }
 
   .a,
@@ -306,3 +310,4 @@ th {
     margin: 0 0 0 -1.5em;
   }
 }
+
