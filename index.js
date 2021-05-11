@@ -1,8 +1,8 @@
 require("dotenv").config();
 
 // llamamos al modulo app, del archivo server.js
-const app = require("./server");
-require("./database");
+const app = require("./src/server");
+require("./src/database");
 
 // llamamos al puerto de acceso desde el archivo database
 const port = app.get("port");

@@ -20,7 +20,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   box-shadow: 0 4px 8px var(--info);
   overflow: hidden;
 }
@@ -87,7 +87,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .animate__fadeInUp,
@@ -157,8 +157,8 @@ estilos Teclado piano
   justify-content: center;
   border-radius: 1em;
   align-items: center;
-  margin-right: 50px;
   padding-left: 0;
+  margin-top: 50px;
   margin-left: 0;
   width: 100%;
 }
@@ -266,9 +266,9 @@ th {
 
 @media (min-width: 600px) {
   .formulario {
-    width: 500px;
+    width: 650px;
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-top: 50px;
   }
   .content-nav {
     background-color: var(--light);
@@ -281,9 +281,6 @@ th {
   .animate__bounce:hover {
     animation-duration: 2s;
     animation-iteration-count: infinite;
-  }
-  .content-piano {
-    width: 100%;
   }
 
   .content-piano--teclas {
