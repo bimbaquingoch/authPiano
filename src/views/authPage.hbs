@@ -1,24 +1,30 @@
-<form class="formulario" action='/' method="POST">
-<div class="form-content">
-  <div class="content-piano animate__fadeInUp">
-    <h5>Selecciona tus notas &#x266b</h5>
+<br>
+<br>
+<br>
 
+<form class="formulario" action='/authPage' method="POST">
+  <input id="nickname" name="nickname" type="hidden" value="{{nickname}}">
+  <div class="content-piano animate__fadeInUp">
+    <h5>
+      Hola {{nickname}}, selecciona tus notas &#x266b
+    </h5>
     <table class="table">
       <thead>
         <tr>
           <th>
-            <input type="text" id="valor0" name="valor0" readonly=readonly value="" size="1" />
+            <input type="text" id="valor0" name="valor0" readonly=readonly value="{{notasIds.[0]}}" size="1" />
           </th>
           <th>
-            <input type="text" id="valor1" name="valor1" readonly=readonly value="" size="1" />
+            <input type="text" id="valor1" name="valor1" readonly=readonly value="{{notasIds.[1]}}" size="1" />
           </th>
           <th>
-            <input type="text" id="valor2" name="valor2" readonly=readonly value="" size="1" />
+            <input type="text" id="valor2" name="valor2" readonly=readonly value="{{notasIds.[2]}}" size="1" />
           </th>
           <th>
-            <input type="text" id="valor3" name="valor3" readonly=readonly value="" size="1" />
+            <input type="text" id="valor3" name="valor3" readonly=readonly value="{{notasIds.[3]}}" size="1" />
           </th>
         </tr>
+
         <tr>
           <th>
             <input type="text" id="nota1" name="nota1" placeholder="&#x266b" readonly=readonly value="" size="1" />
@@ -39,50 +45,50 @@
     <div class="content-piano--teclas">
       <ul id="piano" class="set piano">
 
-        <li id="do" onclick="jsNota(this,174.614)" class="white e">
+        <li id="do" onclick="jsNotaLogin(this,174.614)" class="white e">
           <p class="nota-musical-b">DO</p>
         </li>
 
-        <li id="do#" onclick="jsNota(this,184.997)" class="black ds">
+        <li id="do#" onclick="jsNotaLogin(this,184.997)" class="black ds">
           <p class="nota-musical-n">DO#</p>
         </li>
 
-        <li id="re" onclick="jsNota(this,195.998)" class="white d">
+        <li id="re" onclick="jsNotaLogin(this,195.998)" class="white d">
           <p class="nota-musical-b">RE</p>
         </li>
 
-        <li id="re#" onclick="jsNota(this,207.652)" class="black cs">
+        <li id="re#" onclick="jsNotaLogin(this,207.652)" class="black cs">
           <p class="nota-musical-n">RE#</p>
         </li>
 
-        <li id="mi" onclick="jsNota(this,220.000)" class="white c">
+        <li id="mi" onclick="jsNotaLogin(this,220.000)" class="white c">
           <p class="nota-musical-b">MI</p>
         </li>
-        <li id="fa" onclick="jsNota(this,246.942)" class="white b">
+        <li id="fa" onclick="jsNotaLogin(this,246.942)" class="white b">
           <p class="nota-musical-b">FA</p>
         </li>
 
-        <li id="fa#" onclick="jsNota(this,233.082)" class="black fs">
+        <li id="fa#" onclick="jsNotaLogin(this,233.082)" class="black fs">
           <p class="nota-musical-n">FA#</p>
         </li>
 
-        <li id="sol" onclick="jsNota(this,261.626)" class="white f">
+        <li id="sol" onclick="jsNotaLogin(this,261.626)" class="white f">
           <p class="nota-musical-b">SOL</p>
         </li>
 
-        <li id="sol" onclick="jsNota(this,277.183)" class="black as">
+        <li id="sol" onclick="jsNotaLogin(this,277.183)" class="black as">
           <p class="nota-musical-n">SOL#</p>
         </li>
 
-        <li id="la" onclick="jsNota(this,293.665)" class="white a">
+        <li id="la" onclick="jsNotaLogin(this,293.665)" class="white a">
           <p class="nota-musical-b">LA</p>
         </li>
 
-        <li id="la#" onclick="jsNota(this,311.127)" class="black gs">
+        <li id="la#" onclick="jsNotaLogin(this,311.127)" class="black gs">
           <p class="nota-musical-n">LA#</p>
         </li>
 
-        <li id="si" onclick="jsNota(this,329.628)" class="white g">
+        <li id="si" onclick="jsNotaLogin(this,329.628)" class="white g">
           <p class="nota-musical-b">SI</p>
         </li>
       </ul>
@@ -92,9 +98,14 @@
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">
       Send
     </button>
-
-    {{!-- <button class="btn btn-warning" style="margin-left: 10px">Borrar</button> --}}
+    <br>
+    <br>
+    <input type="reset" style="margin-left: 10px " class="btn btn-warning" onclick="resetNotas()" value="Limpiar">
   </div>
+<<<<<<< HEAD
   </div>
 </div>
 </form>
+=======
+</form>
+>>>>>>> master

@@ -55,10 +55,41 @@ function jsNota(obj, frecuencia) {
     for (var i = 0; i < notas.length; i++) {
       var nota = "nota" + (i + 1);
       var valor = "valor" + i;
-      document.getElementById(nota).value = notas[i];
-      document.getElementById(valor).value = miarray[i];
+      if (document.getElementById(valor).value > 0) {
+        document.getElementById(nota).value = notas[i];
+      } else {
+        document.getElementById(nota).value = notas[i];
+        document.getElementById(valor).value = miarray[i];
+      }
     }
     obj.style.pointerEvents = "none";
     obj.style.background = "#CFE2CA";
   }
+}
+
+
+
+function jsNotaLogin(obj, frecuencia) {
+  var o = context.createOscillator();
+  g = context.createGain();
+  o.connect(g);
+  o.type = "sawtooth";
+  o.frequency.value = frecuencia;
+  g.connect(context.destination);
+  o.start(0);
+  g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 1.5);
+
+  var nota = obj.id;
+  notas.push(nota);
+
+  if (notas.length <= 4) {
+    for (var i = 0; i < notas.length; i++) {
+      var nota = "nota" + (i + 1);
+      document.getElementById(nota).value = notas[i];
+    }
+  }
+}
+
+function resetNotas(){
+  notas=[];
 }

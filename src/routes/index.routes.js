@@ -12,6 +12,7 @@ const router = Router();
 const {
   renderIndex,
   renderLogin,
+  renderAuthPage,
   login,
   registro,
   authPage,
@@ -22,7 +23,7 @@ router.get("/", renderIndex);
 router.post("/", registro);
 router.get("/login", renderLogin);
 router.post("/login", login);
-router.get("/authPage", authPage);
+router.get("/authPage", renderAuthPage);
 router.post("/authPage", authPage);
 router.get("/welcome", welcome);
 
