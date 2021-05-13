@@ -1,14 +1,9 @@
-<br>
-<br>
-<br>
-
 <form class="formulario" action='/authPage' method="POST">
-
   <input id="nickname" name="nickname" type="hidden" value="{{nickname}}">
   <div class="content-piano animate__fadeInUp">
-    <h5>
+    <h4 class="content-piano__header">
       Hola {{nickname}}, selecciona tus notas &#x266b
-    </h5>
+    </h4>
     <table class="table">
       <thead>
         <tr>
@@ -95,13 +90,11 @@
       </ul>
     </div>
 
-  </div>
-  <div class="content-buttons">
-    <button type="submit" class="btn btn-primary" style="margin-left: 10px">
-      Send
-    </button>
-    <br>
-    <br>
-    <input type="reset" style="margin-left: 10px " class="btn btn-warning" onclick="resetNotas()" value="Limpiar">
+    <div class="content-buttons">
+      <button type="submit" class="btn btn-primary">
+        Send
+      </button>
+      <input type="reset" class="btn btn-warning" onclick="resetNotas()" value="Limpiar">
+    </div>
   </div>
 </form>

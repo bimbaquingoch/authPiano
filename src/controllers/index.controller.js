@@ -76,7 +76,7 @@ indexCtrl.registro = async (req, res) => {
   if (nota1 && nota2 && nota3 && nota4) {
     credencial = {
       id: [valor0, valor1, valor2, valor3],
-      nota: [nota1, nota2, nota3, nota4]
+      nota: [nota1, nota2, nota3, nota4],
     };
   } else {
     errors.push({ text: "Una o varias notas no han sido seleccionadas" });
@@ -138,7 +138,6 @@ indexCtrl.login = passport.authenticate("local", {
   failureFlash: true,
 });
 
-
 // renderiza la pagina de autenticacion
 indexCtrl.renderAuthPage = (req, res) => {
   if (req.user) {
@@ -161,26 +160,41 @@ indexCtrl.renderAuthPage = (req, res) => {
 
 indexCtrl.authPage = async (req, res) => {
   const {
-    nota1, nota2, nota3, nota4,
-    valor0, valor1, valor2, valor3, nickname
+    nota1,
+    nota2,
+    nota3,
+    nota4,
+    valor0,
+    valor1,
+    valor2,
+    valor3,
+    nickname,
   } = req.body;
   const errors = [];
   var credencial = {};
-  if (nota1.length != 0 && nota2.length != 0 && nota3.length != 0 && nota4.length != 0) {
+  if (
+    nota1.length != 0 &&
+    nota2.length != 0 &&
+    nota3.length != 0 &&
+    nota4.length != 0
+  ) {
     credencial = {
       id: [valor0, valor1, valor2, valor3],
-      nota: [nota1, nota2, nota3, nota4]
+      nota: [nota1, nota2, nota3, nota4],
     };
 
-    const credencialUser = await User.findOne({ nickname: nickname }, { "credencial": 1, _id: 0 });
-    idNotasUser = credencialUser['credencial']['id'];
-    NotasUser = credencialUser['credencial']['nota'];
+    const credencialUser = await User.findOne(
+      { nickname: nickname },
+      { credencial: 1, _id: 0 }
+    );
+    idNotasUser = credencialUser["credencial"]["id"];
+    NotasUser = credencialUser["credencial"]["nota"];
     var i = 0;
     var pos = 0;
     bandera = true;
     while (bandera) {
       var pos = idNotasUser.indexOf(credencial.id[i]);
-      NotasUser[pos] == credencial.nota[i]
+      NotasUser[pos] == credencial.nota[i];
       if ((NotasUser[pos] === credencial.nota[i]) == false) {
         errors.push({ text: "Credenciales musicales Invalidas" });
         bandera = false;
@@ -191,8 +205,8 @@ indexCtrl.authPage = async (req, res) => {
       pos++;
       i++;
     }
-  }else{
-      errors.push({ text: "Una o varias notas no han sido seleccionadas" });
+  } else {
+    errors.push({ text: "Una o varias notas no han sido seleccionadas" });
   }
 
   if (errors.length > 0) {

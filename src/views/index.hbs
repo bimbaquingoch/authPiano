@@ -25,7 +25,7 @@
   <input type="password" class="form-control animate__fadeInUp" id="password" placeholder="CONTRASEÑA" name="password"
     required />
 
-  <input type="password" class="form-control animate__fadeInUp" id="verificarPassword" placeholder="VERIFICAR PASSWORD"
+  <input type="password" class="form-control animate__fadeInUp" id="verificarPassword" placeholder="VERIFICAR CONTRASEÑA"
     name="verifypass" required />
 
   <select class="form-control animate__fadeInUp" name="estCivil" id="estCivil" value="{{estCivil}}" required>
@@ -59,7 +59,7 @@
     value="{{phone}}" required />
 
   <input type="date" class="form-control animate__fadeInUp" id="Fecha" placeholder="FECHA DE NACIMIENTO" name="age"
-    value="{{age}}" required />
+    value="{{age}}" required min="1940-12-31" max="2008-12-31"/>
 
   <select class="form-control animate__fadeInUp" name="provincia" id="provincia" onchange="cargarPueblos();" required>
     <option value="">Seleccione una Provincia...</option>
@@ -181,8 +181,8 @@
       <p>Al presionar una nota se le asignará 
       un número aleatorio entre 0 y 9.</p>
 
-      <p>Para finalizar tu registro debes seleccionar 4 notas y recordar que 
-      número corresponde a cada nota como muestra el ejemplo</p>
+      <p>Para finalizar tu registro debes seleccionar 4 notas y recordar el 
+      número correspondiente a cada nota como muestra el ejemplo</p>
 
       <img class="imgInst" src="/img/auth.png" alt="">
 
