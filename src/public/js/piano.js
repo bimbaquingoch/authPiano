@@ -73,32 +73,19 @@ function jsNota(obj, frecuencia) {
     obj.style.pointerEvents = "none";
     obj.style.background = "#CFE2CA";
   }
-  const blockNote = "#CFE2CA";
   if (notas.length == 4) {
     document.getElementById("do").style.pointerEvents = "none";
-    document.getElementById("do").style.background = blockNote;
     document.getElementById("re").style.pointerEvents = "none";
-    document.getElementById("re").style.background = blockNote;
     document.getElementById("mi").style.pointerEvents = "none";
-    document.getElementById("mi").style.background = blockNote;
     document.getElementById("fa").style.pointerEvents = "none";
-    document.getElementById("fa").style.background = blockNote;
     document.getElementById("sol").style.pointerEvents = "none";
-    document.getElementById("sol").style.background = blockNote;
     document.getElementById("la").style.pointerEvents = "none";
-    document.getElementById("la").style.background = blockNote;
     document.getElementById("si").style.pointerEvents = "none";
-    document.getElementById("si").style.background = blockNote;
     document.getElementById("do#").style.pointerEvents = "none";
-    document.getElementById("do#").style.background = blockNote;
     document.getElementById("re#").style.pointerEvents = "none";
-    document.getElementById("re#").style.background = blockNote;
     document.getElementById("fa#").style.pointerEvents = "none";
-    document.getElementById("fa#").style.background = blockNote;
     document.getElementById("sol#").style.pointerEvents = "none";
-    document.getElementById("sol#").style.background = blockNote;
     document.getElementById("la#").style.pointerEvents = "none";
-    document.getElementById("la#").style.background = blockNote;
   }
 }
 
