@@ -25,28 +25,36 @@ function jsNota(obj, frecuencia) {
   }
 
   if (nota == "re") {
+    document.getElementById("do").style.pointerEvents = "none";
+    document.getElementById("do").style.background = "#FFB2B2";
     document.getElementById("mi").style.pointerEvents = "none";
     document.getElementById("mi").style.background = "#FFB2B2";
   }
 
   if (nota == "mi") {
+    document.getElementById("re").style.pointerEvents = "none";
+    document.getElementById("re").style.background = "#FFB2B2";
     document.getElementById("fa").style.pointerEvents = "none";
     document.getElementById("fa").style.background = "#FFB2B2";
-    // document.getElementById("re").style.pointerEvents = "all";
-    // document.getElementById("re").style.background = "#FFFFFF";
   }
 
   if (nota == "fa") {
+    document.getElementById("mi").style.pointerEvents = "none";
+    document.getElementById("mi").style.background = "#FFB2B2";
     document.getElementById("sol").style.pointerEvents = "none";
     document.getElementById("sol").style.background = "#FFB2B2";
   }
 
   if (nota == "sol") {
+    document.getElementById("fa").style.pointerEvents = "none";
+    document.getElementById("fa").style.background = "#FFB2B2";
     document.getElementById("la").style.pointerEvents = "none";
     document.getElementById("la").style.background = "#FFB2B2";
   }
 
   if (nota == "la") {
+    document.getElementById("sol").style.pointerEvents = "none";
+    document.getElementById("sol").style.background = "#FFB2B2";
     document.getElementById("si").style.pointerEvents = "none";
     document.getElementById("si").style.background = "#FFB2B2";
   }
@@ -65,9 +73,34 @@ function jsNota(obj, frecuencia) {
     obj.style.pointerEvents = "none";
     obj.style.background = "#CFE2CA";
   }
+  const blockNote = "#CFE2CA";
+  if (notas.length == 4) {
+    document.getElementById("do").style.pointerEvents = "none";
+    document.getElementById("do").style.background = blockNote;
+    document.getElementById("re").style.pointerEvents = "none";
+    document.getElementById("re").style.background = blockNote;
+    document.getElementById("mi").style.pointerEvents = "none";
+    document.getElementById("mi").style.background = blockNote;
+    document.getElementById("fa").style.pointerEvents = "none";
+    document.getElementById("fa").style.background = blockNote;
+    document.getElementById("sol").style.pointerEvents = "none";
+    document.getElementById("sol").style.background = blockNote;
+    document.getElementById("la").style.pointerEvents = "none";
+    document.getElementById("la").style.background = blockNote;
+    document.getElementById("si").style.pointerEvents = "none";
+    document.getElementById("si").style.background = blockNote;
+    document.getElementById("do#").style.pointerEvents = "none";
+    document.getElementById("do#").style.background = blockNote;
+    document.getElementById("re#").style.pointerEvents = "none";
+    document.getElementById("re#").style.background = blockNote;
+    document.getElementById("fa#").style.pointerEvents = "none";
+    document.getElementById("fa#").style.background = blockNote;
+    document.getElementById("sol#").style.pointerEvents = "none";
+    document.getElementById("sol#").style.background = blockNote;
+    document.getElementById("la#").style.pointerEvents = "none";
+    document.getElementById("la#").style.background = blockNote;
+  }
 }
-
-
 
 function jsNotaLogin(obj, frecuencia) {
   var o = context.createOscillator();
@@ -90,6 +123,6 @@ function jsNotaLogin(obj, frecuencia) {
   }
 }
 
-function resetNotas(){
-  notas=[];
+function resetNotas() {
+  notas = [];
 }
