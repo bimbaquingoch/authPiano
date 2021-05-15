@@ -55,6 +55,33 @@
       </script>
 
 
+  <select class="form-control animate__fadeInUp" name="nivelEducacion" id="nivelEducacion" value="{{nivelEducacion}}" required>
+        <option value="{{nivelEducacion}}">NIVEL DE EDUCACIÓN:</option>
+      </select>
+
+      <script type="text/javascript">
+        function cargarNivelEducacion() {
+          var array = ["Sin educación", "Primaria incompleta","Primaria completa","Secundaria incompleta","Secundaria completa","Técnico/Superior incompleta","Técnico/Superior completa"];
+          array.sort();
+          addOptions("nivelEducacion", array);
+        }
+
+
+        //Función para agregar opciones a un <select>.
+        function addOptions(domElement, array) {
+          var selector = document.getElementsByName(domElement)[0];
+          for (estCivil in array) {
+            let opcion = document.createElement("option");
+            opcion.text = array[estCivil];
+            // Añadimos un value a los option para hacer mas facil escoger los pueblos
+            // opcion.value = array[estCivil]
+            selector.add(opcion);
+          }
+        }
+        cargarNivelEducacion();
+      </script>
+
+
       <input type="tel" class="form-control animate__fadeInUp" id="telefono" placeholder="TELEFONO" name="phone"
         value="{{phone}}" required />
 
