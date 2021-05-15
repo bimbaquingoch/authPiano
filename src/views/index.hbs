@@ -70,11 +70,11 @@
         //Función para agregar opciones a un <select>.
         function addOptions(domElement, array) {
           var selector = document.getElementsByName(domElement)[0];
-          for (estCivil in array) {
+          for (nivelEducacion in array) {
             let opcion = document.createElement("option");
-            opcion.text = array[estCivil];
+            opcion.text = array[nivelEducacion];
             // Añadimos un value a los option para hacer mas facil escoger los pueblos
-            // opcion.value = array[estCivil]
+            // opcion.value = array[nivelEducacion]
             selector.add(opcion);
           }
         }
