@@ -2,12 +2,13 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/User");
 
-passport.use("local",
+passport.use(
+  "local",
   //definimos una nueva estrategia para autenticar
   new LocalStrategy(
     {
       usernameField: "email",
-      passwordField: "password"
+      passwordField: "password",
     },
     // toma los datos y valida con la BDD
     async (email, password, done) => {
@@ -16,16 +17,16 @@ passport.use("local",
       // si no existe un usuario
       if (!user) {
         return done(null, false, {
-          message: "No se encontró un usuario"
+          message: "No se encontró un usuario",
         });
       } else {
         // validar si la contraseña coincide con el correo
         const match = await user.comparaPWD(password);
-        if (match) {     
+        if (match) {
           return done(null, user);
         } else {
           return done(null, false, {
-            message: "Usuario o contraseña incorrecta"
+            message: "Usuario o contraseña incorrecta",
           });
         }
       }
@@ -46,3 +47,4 @@ passport.deserializeUser((id, done) => {
     done(err, user);
   });
 });
+

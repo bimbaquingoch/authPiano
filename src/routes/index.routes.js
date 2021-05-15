@@ -17,6 +17,7 @@ const {
   registro,
   authPage,
   welcome,
+  cerrarSesion,
 } = require("../controllers/index.controller");
 
 router.get("/", renderIndex);
@@ -26,6 +27,7 @@ router.post("/login", login);
 router.get("/authPage", renderAuthPage);
 router.post("/authPage", authPage);
 router.get("/welcome", welcome);
+router.get("/login", cerrarSesion);
 
 // exportamos el router
 // para usarlo en el server.js
