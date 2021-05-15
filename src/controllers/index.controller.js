@@ -7,7 +7,7 @@ const passport = require("passport");
 // llamamos a la clase usuario para guardar
 // los datos que nos llega del formulario
 
-const User = require("../models/User");
+const User = require("../modelos/User");
 
 // indexCtrl.(este es el nombre del metodo)
 // indexCtrl.renderizarLogin
@@ -37,7 +37,7 @@ indexCtrl.registro = async (req, res) => {
     password,
     verifypass,
     estCivil,
-nivelEducacion,
+    nivelEducacion,
     phone,
     age,
     provincia,
@@ -104,7 +104,7 @@ nivelEducacion,
       password,
       verifypass,
       estCivil,
-nivelEducacion,
+      nivelEducacion,
       phone,
       age,
       provincia,
