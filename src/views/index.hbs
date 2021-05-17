@@ -178,7 +178,7 @@
       <input type="file" class="load-img animate__fadeInUp" id="file" name='img' accept="image/*"
         onchange="validateFileType()" required />
       <input type="text" class="form-control animate__fadeInUp" id="numCedula" placeholder="NUMERO DE CEDULA"
-        name="cedula" value="{{cedula}}" required />
+        name="cedula" value="{{cedula}}" pattern="[0-9]+" title="Ingrese solo números"  required />
 
 
       <label class='genero animate__fadeInUp' for="">GENERO:</label>
