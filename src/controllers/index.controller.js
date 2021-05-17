@@ -55,8 +55,34 @@ indexCtrl.registro = async (req, res) => {
     valor3,
   } = req.body;
 
+  if (cedula.length != 10) {
+    errors.push({ text: "Su cedula debe tener 10 números" });
+  }
+
+  if (phone.length != 10) {
+    errors.push({ text: "SU número de telefono debe tener 10 números" });
+  }
+
+  if (nombre.length < 3) {
+    errors.push({ text: "El nombre es demaciado corto. Mínimo 3 caracteres" });
+  }
+
+  if (apellido.length < 3) {
+    errors.push({
+      text: "Su apellido es demaciado corto. Mínimo 3 caracteres",
+    });
+  }
+
   if (password != verifypass) {
     errors.push({ text: "Las contraseñas no coinciden." });
+  }
+
+  if (password.length < 8) {
+    errors.push({ text: "La contraseña es muy corta, mínimo 8 caracteres." });
+  }
+
+  if (nickname.length < 5) {
+    errors.push({ text: "Apodo muy corto, minimo 5 caracteres" });
   }
 
   const emailUser = await User.findOne({ email: email });

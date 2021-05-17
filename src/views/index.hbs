@@ -17,13 +17,13 @@
         autocomplete="lastname" value="{{apellido}}" required pattern="[A-Za-z]+" title="Solo letras" />
 
       <input type="text" class="form-control animate__fadeInUp" id="nick" placeholder="APODO" name="nickname"
-        value="{{nickname}}" required />
+        value="{{nickname}}" minlength="5" maxlength="40" required />
 
       <input type="email" class="form-control animate__fadeInUp" id="correo" placeholder="CORREO" name="email"
         autocomplete='email' value="{{email}}" required />
 
       <input type="password" class="form-control animate__fadeInUp" id="password" placeholder="CONTRASEÑA"
-        name="password" required />
+        name="password" minlength="8" required />
 
       <input type="password" class="form-control animate__fadeInUp" id="verificarPassword"
         placeholder="VERIFICAR CONTRASEÑA" name="verifypass" required />
@@ -34,7 +34,7 @@
 
       <script type="text/javascript">
         function cargarEstado() {
-          var array = ["Soltero", "Casado", "Divorciado", "Viudo", "Unión de hecho"];
+          var array = ["Solter@", "Casad@", "Divorciad@", "Viud@", "Unión de hecho"];
           array.sort();
           addOptions("estCivil", array);
         }
