@@ -11,10 +11,10 @@
       <h1 class='animate__fadeInUp'>Registro</h1>
 
       <input type="text" class="form-control animate__fadeInUp" id="nombre" placeholder="NOMBRE" name="nombre"
-        autocomplete="name" value="{{nombre}}" required />
+        autocomplete="name" value="{{nombre}}" required pattern="[A-Za-z]+" title="Solo letras" />
 
       <input type="text" class="form-control animate__fadeInUp" id="apellido" placeholder="APELLIDO" name="apellido"
-        autocomplete="lastname" value="{{apellido}}" required />
+        autocomplete="lastname" value="{{apellido}}" required pattern="[A-Za-z]+" title="Solo letras" />
 
       <input type="text" class="form-control animate__fadeInUp" id="nick" placeholder="APODO" name="nickname"
         value="{{nickname}}" required />
@@ -38,8 +38,6 @@
           array.sort();
           addOptions("estCivil", array);
         }
-
-
         //Función para agregar opciones a un <select>.
         function addOptions(domElement, array) {
           var selector = document.getElementsByName(domElement)[0];
@@ -55,14 +53,14 @@
       </script>
 
 
-  <select class="form-control animate__fadeInUp" name="nivelEducacion" id="nivelEducacion" value="{{nivelEducacion}}" required>
+      <select class="form-control animate__fadeInUp" name="nivelEducacion" id="nivelEducacion"
+        value="{{nivelEducacion}}" required>
         <option value="{{nivelEducacion}}">NIVEL DE EDUCACIÓN:</option>
       </select>
 
       <script type="text/javascript">
         function cargarNivelEducacion() {
-          var array = ["Sin educación", "Primaria incompleta","Primaria completa","Secundaria incompleta","Secundaria completa","Técnico/Superior incompleta","Técnico/Superior completa"];
-          array.sort();
+          var array = ["Sin educación", "Primaria incompleta", "Primaria completa", "Secundaria incompleta", "Secundaria completa", "Técnico/Superior incompleta", "Técnico/Superior completa"];
           addOptions("nivelEducacion", array);
         }
 
@@ -81,9 +79,8 @@
         cargarNivelEducacion();
       </script>
 
-
       <input type="tel" class="form-control animate__fadeInUp" id="telefono" placeholder="TELEFONO" name="phone"
-        value="{{phone}}" required />
+        value="{{phone}}" required pattern="[0-9]+" title="Ingrese solo números" />
 
       <input type="date" class="form-control animate__fadeInUp" id="Fecha" placeholder="FECHA DE NACIMIENTO" name="age"
         value="{{age}}" required min="1940-12-31" max="2008-12-31" />
@@ -157,7 +154,6 @@
           var provinciaSeleccionada = provincias.value
           provinciaSeleccionada = provinciaSeleccionada.replace(/ /g, "")
           provinciaSeleccionada = provinciaSeleccionada.toLowerCase()
-          console.log(provinciaSeleccionada)
 
           // Se limpian los pueblos
           cantones.innerHTML = '<option value="">Seleccione un Cantón...</option>'
@@ -179,7 +175,8 @@
         }
         cargarProvincias();
       </script>
-      <input type="file" class="load-img animate__fadeInUp" id="file" name='img' accept="image/*" required />
+      <input type="file" class="load-img animate__fadeInUp" id="file" name='img' accept="image/*"
+        onchange="validateFileType()" required />
       <input type="text" class="form-control animate__fadeInUp" id="numCedula" placeholder="NUMERO DE CEDULA"
         name="cedula" value="{{cedula}}" required />
 
@@ -304,8 +301,9 @@
       </div>
 
       <div class="content-buttons">
+        <input type="button" class="btn btn-warning" value="Limpiar" onclick="resetNotasIndex()">
         <button type="submit" class="btn btn-primary">
-          Send
+          Enviar
         </button>
 
         {{!-- <button class="btn btn-warning" style="margin-left: 10px">Borrar</button> --}}

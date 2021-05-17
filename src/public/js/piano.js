@@ -6,6 +6,7 @@ miarray = miarray.sort(function () {
 });
 
 //var teclas = 27;
+
 function jsNota(obj, frecuencia) {
   var o = context.createOscillator();
   g = context.createGain();
@@ -30,14 +31,14 @@ function jsNota(obj, frecuencia) {
     document.getElementById("mi").style.pointerEvents = "none";
     document.getElementById("mi").style.background = "#FFB2B2";
   }
-
-  if (nota == "mi") {
-    document.getElementById("re").style.pointerEvents = "none";
-    document.getElementById("re").style.background = "#FFB2B2";
-    document.getElementById("fa").style.pointerEvents = "none";
-    document.getElementById("fa").style.background = "#FFB2B2";
-  }
-
+  /*
+    if (nota == "mi") {
+      document.getElementById("re").style.pointerEvents = "none";
+      document.getElementById("re").style.background = "#FFB2B2";
+      document.getElementById("fa").style.pointerEvents = "none";
+      document.getElementById("fa").style.background = "#FFB2B2";
+    }
+  */
   if (nota == "fa") {
     document.getElementById("mi").style.pointerEvents = "none";
     document.getElementById("mi").style.background = "#FFB2B2";
@@ -110,6 +111,45 @@ function jsNotaLogin(obj, frecuencia) {
   }
 }
 
+function resetNotasIndex() {
+  notas = [];
+
+  document.getElementById("valor0").value ="";
+  document.getElementById("valor1").value ="";
+  document.getElementById("valor2").value ="";
+  document.getElementById("valor3").value ="";
+
+  document.getElementById("nota1").value="";
+  document.getElementById("nota2").value="";
+  document.getElementById("nota3").value="";
+  document.getElementById("nota4").value="";
+
+  document.getElementById("do").style = "";
+  document.getElementById("re").style = "";
+  document.getElementById("mi").style = "";
+  document.getElementById("fa").style = "";
+  document.getElementById("sol").style = "";
+  document.getElementById("la").style = "";
+  document.getElementById("si").style = "";
+  document.getElementById("do#").style = "";
+  document.getElementById("re#").style = "";
+  document.getElementById("fa#").style = "";
+  document.getElementById("sol#").style = "";
+  document.getElementById("la#").style = "";
+}
+
 function resetNotas() {
   notas = [];
+}
+
+function validateFileType() {
+  var fileName = document.getElementById("file").value;
+  var idxDot = fileName.lastIndexOf(".") + 1;
+  var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+  if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+    //TO DO
+  } else {
+    document.getElementById("file").value = "";
+    alert("Solo se admite archivos con extensión jpg/jpeg y png!");
+  }
 }

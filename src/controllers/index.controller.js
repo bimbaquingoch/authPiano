@@ -73,16 +73,18 @@ indexCtrl.registro = async (req, res) => {
   if (nicknameUser) {
     errors.push({ text: "Su nickname ya se encuentra registrado" });
   }
+
+  console.log("N1", nota1, " N2", nota2, " N3", nota3, " N4", nota4)
+
   var credencial = {};
-  if (nota1 && nota2 && nota3 && nota4) {
+  if (nota1 == "" || nota2 == "" || nota3 == "" || nota4 == "") {
+    errors.push({ text: "Una o varias notas no tiene asignado un valor" });
+  } else {
     credencial = {
       id: [valor0, valor1, valor2, valor3],
       nota: [nota1, nota2, nota3, nota4],
     };
-  } else {
-    errors.push({ text: "Una o varias notas no han sido seleccionadas" });
   }
-
   if (errors.length > 0) {
     res.render("index", {
       errors,
@@ -95,6 +97,7 @@ indexCtrl.registro = async (req, res) => {
       cedula,
       genero,
     });
+    //errors1.splice(0, errors1.length);
   } else {
     const usuarioNuevo = new User({
       nombre,
