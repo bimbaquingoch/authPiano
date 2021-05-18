@@ -175,8 +175,30 @@
         }
         cargarProvincias();
       </script>
-      <input type="file" class="load-img animate__fadeInUp" id="file" name='img' accept="image/*"
-        onchange="validateFileType()" required />
+      {{!-- <input type="file" class="btn-file load-img animate__fadeInUp" id="file" name='img' accept="image/*" --}}
+        {{!-- onchange="validateFileType()" required /> --}}
+
+      <button type="button" class="load-img  btn btn-primary animate__fadeInUp " onclick="document.getElementById('inputFile').click()">Cargar/Arrastar Imagen</button>
+      <div class="form-group inputDnD animate__fadeInUp">
+        <label class="sr-only" for="inputFile">File Upload</label>
+        <input type="file" class="form-control-file text-primary" name='img' id="inputFile" accept="image/*" onchange="readUrl(this)"/>
+      </div>
+      <script charset="utf-8">
+        function readUrl(input) {
+  
+        if (input.files && input.files[0]) {
+          let reader = new FileReader();
+          reader.onload = (e) => {
+          let imgData = e.target.result;
+          let imgName = input.files[0].name;
+          input.setAttribute("data-title", imgName);
+          console.log(e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+      }
+      </script>
+
       <input type="text" class="form-control animate__fadeInUp" id="numCedula" placeholder="NUMERO DE CEDULA"
         name="cedula" value="{{cedula}}" pattern="[0-9]+" title="Ingrese solo números" required />
 

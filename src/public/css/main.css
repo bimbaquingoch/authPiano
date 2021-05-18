@@ -102,12 +102,12 @@ input[type="date"]:valid:before {
 
 .form-control {
   margin: 20px 0 auto;
-  /*padding: 20px;*/
   width: 80%;
 }
 
 .load-img {
   margin-top: 20px;
+  margin-bottom: 0;
   width: 80%;
 }
 
@@ -313,6 +313,48 @@ th {
 #nota3,
 #nota4 {
   text-align: center;
+}
+
+.inputDnD {
+  margin-top: 0;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-control-file {
+  margin-bottom: 0;
+  width: 80%;
+  position: relative;
+  min-height: 6em;
+  outline: none;
+  visibility: hidden;
+  cursor: pointer;
+  box-shadow: 0 0 5px solid currentColor;
+}
+
+.form-control-file:before {
+  content: attr(data-title);
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  width: 100%;
+  min-height: 6em;
+  line-height: 2em;
+  padding-top: 1.5em;
+  opacity: 1;
+  visibility: visible;
+  text-align: center;
+  border: 0.25em dashed currentColor;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+
+.form-control-file:hover:before {
+  border-style: solid;
+  box-shadow: inset 0px 0px 0px 0.25em currentColor;
 }
 
 @media (min-width: 600px) {
