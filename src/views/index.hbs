@@ -11,13 +11,13 @@
       <h1 class='animate__fadeInUp'>Registro</h1>
 
       <input type="text" class="form-control animate__fadeInUp" id="nombre" placeholder="NOMBRE" name="nombre"
-        autocomplete="name" value="{{nombre}}" required pattern="[A-Za-z\s]+" title="Solo letras" />
+        autocomplete="name" value="{{nombre}}" minlength="3" maxlength="40" required pattern="[A-Za-z\s]+" title="Nombre muy corto" />
 
       <input type="text" class="form-control animate__fadeInUp" id="apellido" placeholder="APELLIDO" name="apellido"
-        autocomplete="lastname" value="{{apellido}}" required pattern="[A-Za-z\s]+" title="Solo letras" />
+        autocomplete="lastname" value="{{apellido}}" minlength="3" maxlength="40" required pattern="[A-Za-z\s]+" title="Apellido muy corto" />
 
       <input type="text" class="form-control animate__fadeInUp" id="nick" placeholder="APODO" name="nickname"
-        value="{{nickname}}" minlength="5" maxlength="40" required />
+        value="{{nickname}}" minlength="5" maxlength="40" title="Apodo debe ser de minimo 5 caracteres" required />
 
       <input type="email" class="form-control animate__fadeInUp" id="correo" placeholder="CORREO" name="email"
         autocomplete='email' value="{{email}}" required />
@@ -80,7 +80,7 @@
       </script>
 
       <input type="tel" class="form-control animate__fadeInUp" id="telefono" placeholder="TELEFONO" name="phone"
-        value="{{phone}}" required pattern="[0-9]+" title="Ingrese solo números" />
+        value="{{phone}}" minlength="10" required pattern="[0-9]+" title="Ingrese solo números" />
 
       <input type="date" class="form-control animate__fadeInUp" id="Fecha" placeholder="FECHA DE NACIMIENTO" name="age"
         value="{{age}}" required min="1940-12-31" max="2008-12-31" />
@@ -179,7 +179,7 @@
         {{!-- onchange="validateFileType()" required /> --}}
 
       <button type="button" class="load-img  btn btn-primary animate__fadeInUp "
-        onclick="document.getElementById('inputFile').click()">
+        onclick="document.getElementById('inputFile').click()" required>
         <strong>
           Cargar o Arrastar Imagen
         </strong>
@@ -187,7 +187,7 @@
       <div class="form-group inputDnD animate__fadeInUp">
         <label class="sr-only" for="inputFile">File Upload</label>
         <input type="file" class="form-control-file text-info" name='img' id="inputFile" accept="image/*"
-          onchange="readUrl(this)" required />
+          onchange="readUrl(this)" title="Cargar una imagen" required />
       </div>
 
       <script charset="utf-8">
@@ -217,7 +217,7 @@
       </script>
 
       <input type="text" class="form-control animate__fadeInUp" id="numCedula" placeholder="NUMERO DE CEDULA"
-        name="cedula" value="{{cedula}}" pattern="[0-9]+" title="Ingrese solo números" required />
+        name="cedula" value="{{cedula}}" minlength="10" pattern="[0-9]+" title="Ingrese solo números" required />
 
 
       <label class='genero animate__fadeInUp' for="">GENERO:</label>
