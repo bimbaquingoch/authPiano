@@ -153,7 +153,7 @@ indexCtrl.registro = async (req, res) => {
  */
 
     await usuarioNuevo.save();
-    // mensajes.push({ text: "Usuario registrado exitosamente" });
+    mensajes.push({ text: "Usuario registrado exitosamente" });
     res.render("login", { mensajes });
   }
 };
@@ -260,3 +260,4 @@ indexCtrl.cerrarSesion = (req, res) => {
 
 // exportamos todo el objeto indexCtrl
 module.exports = indexCtrl;
+
