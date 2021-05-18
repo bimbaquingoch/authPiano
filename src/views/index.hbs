@@ -178,7 +178,7 @@
       <input type="file" class="load-img animate__fadeInUp" id="file" name='img' accept="image/*"
         onchange="validateFileType()" required />
       <input type="text" class="form-control animate__fadeInUp" id="numCedula" placeholder="NUMERO DE CEDULA"
-        name="cedula" value="{{cedula}}" pattern="[0-9]+" title="Ingrese solo números"  required />
+        name="cedula" value="{{cedula}}" pattern="[0-9]+" title="Ingrese solo números" required />
 
 
       <label class='genero animate__fadeInUp' for="">GENERO:</label>
@@ -231,16 +231,16 @@
           </tr>
           <tr>
             <th>
-              <input type="text" id="nota1" name="nota1" placeholder="&#x266b" readonly=readonly value="" size="1" />
+              <input type="text" id="nota1"  name="nota1" placeholder="&#x266b" value="" size="1" readonly />
             </th>
             <th>
-              <input type="text" id="nota2" name="nota2" placeholder="&#x266b" readonly=readonly value="" size="1" />
+              <input type="text" id="nota2"  name="nota2" placeholder="&#x266b" value="" size="1" readonly/>
             </th>
             <th>
-              <input type="text" id="nota3" name="nota3" placeholder="&#x266b" readonly=readonly value="" size="1" />
+              <input type="text" id="nota3"  name="nota3" placeholder="&#x266b" value="" size="1" readonly/>
             </th>
             <th>
-              <input type="text" id="nota4" name="nota4" placeholder="&#x266b" readonly=readonly value="" size="1" />
+              <input type="text" id="nota4"  name="nota4" placeholder="&#x266b" value="" size="1" readonly/>
             </th>
           </tr>
         </thead>
@@ -302,9 +302,10 @@
 
       <div class="content-buttons">
         <input type="button" class="btn btn-warning" value="Limpiar" onclick="resetNotasIndex()">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" >
           Enviar
         </button>
+
 
         {{!-- <button class="btn btn-warning" style="margin-left: 10px">Borrar</button> --}}
       </div>
