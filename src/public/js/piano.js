@@ -60,6 +60,11 @@ function jsNota(obj, frecuencia) {
     document.getElementById("si").style.background = "#FFB2B2";
   }
 
+  if (nota == "si") {
+    document.getElementById("la").style.pointerEvents = "none";
+    document.getElementById("la").style.background = "#FFB2B2";
+  }
+
   if (notas.length <= 4) {
     for (var i = 0; i < notas.length; i++) {
       var nota = "nota" + (i + 1);
