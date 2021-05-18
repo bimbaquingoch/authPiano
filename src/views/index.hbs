@@ -11,10 +11,10 @@
       <h1 class='animate__fadeInUp'>Registro</h1>
 
       <input type="text" class="form-control animate__fadeInUp" id="nombre" placeholder="NOMBRE" name="nombre"
-        autocomplete="name" value="{{nombre}}" required pattern="[A-Za-z]+" title="Solo letras" />
+        autocomplete="name" value="{{nombre}}" required pattern="[A-Za-z\s]+" title="Solo letras" />
 
       <input type="text" class="form-control animate__fadeInUp" id="apellido" placeholder="APELLIDO" name="apellido"
-        autocomplete="lastname" value="{{apellido}}" required pattern="[A-Za-z]+" title="Solo letras" />
+        autocomplete="lastname" value="{{apellido}}" required pattern="[A-Za-z\s]+" title="Solo letras" />
 
       <input type="text" class="form-control animate__fadeInUp" id="nick" placeholder="APODO" name="nickname"
         value="{{nickname}}" minlength="5" maxlength="40" required />
