@@ -11,7 +11,7 @@
   align-items: center;
 }
 input[type="date"]:before {
-  content: attr(placeholder) !important;
+  content: attr(placeholder);
   color: #aaa;
   margin-right: 0.5em;
 }
