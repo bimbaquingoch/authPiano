@@ -31,14 +31,14 @@ function jsNota(obj, frecuencia) {
     document.getElementById("mi").style.pointerEvents = "none";
     document.getElementById("mi").style.background = "#FFB2B2";
   }
-  /*
-    if (nota == "mi") {
-      document.getElementById("re").style.pointerEvents = "none";
-      document.getElementById("re").style.background = "#FFB2B2";
-      document.getElementById("fa").style.pointerEvents = "none";
-      document.getElementById("fa").style.background = "#FFB2B2";
-    }
-  */
+
+  if (nota == "mi") {
+    document.getElementById("re").style.pointerEvents = "none";
+    document.getElementById("re").style.background = "#FFB2B2";
+    document.getElementById("fa").style.pointerEvents = "none";
+    document.getElementById("fa").style.background = "#FFB2B2";
+  }
+
   if (nota == "fa") {
     document.getElementById("mi").style.pointerEvents = "none";
     document.getElementById("mi").style.background = "#FFB2B2";
@@ -114,15 +114,15 @@ function jsNotaLogin(obj, frecuencia) {
 function resetNotasIndex() {
   notas = [];
 
-  document.getElementById("valor0").value ="";
-  document.getElementById("valor1").value ="";
-  document.getElementById("valor2").value ="";
-  document.getElementById("valor3").value ="";
+  document.getElementById("valor0").value = "";
+  document.getElementById("valor1").value = "";
+  document.getElementById("valor2").value = "";
+  document.getElementById("valor3").value = "";
 
-  document.getElementById("nota1").value="";
-  document.getElementById("nota2").value="";
-  document.getElementById("nota3").value="";
-  document.getElementById("nota4").value="";
+  document.getElementById("nota1").value = "";
+  document.getElementById("nota2").value = "";
+  document.getElementById("nota3").value = "";
+  document.getElementById("nota4").value = "";
 
   document.getElementById("do").style = "";
   document.getElementById("re").style = "";
