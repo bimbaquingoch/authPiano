@@ -178,7 +178,11 @@
       {{!-- <input type="file" class="btn-file load-img animate__fadeInUp" id="file" name='img' accept="image/*" --}}
         {{!-- onchange="validateFileType()" required /> --}}
 
-      <button type="button" class="load-img  btn btn-primary animate__fadeInUp " onclick="document.getElementById('inputFile').click()">Cargar/Arrastar Imagen</button>
+        <button type="button" class="load-img  btn btn-primary animate__fadeInUp " onclick="document.getElementById('inputFile').click()">
+          <strong>
+            Cargar o Arrastar Imagen
+          </strong>
+        </button>
       <div class="form-group inputDnD animate__fadeInUp">
         <label class="sr-only" for="inputFile">File Upload</label>
         <input type="file" class="form-control-file text-info" name='img' id="inputFile" accept="image/*" onchange="readUrl(this)" required/>
@@ -212,14 +216,14 @@
         <input type="radio" id="otro" name="genero" value="otro" />
         <label for="otro">Otro</label>
       </div>
-      <a href="#instPiano"><img class="animate__shakeX" src="https://img.icons8.com/office/40/000000/arrow.png" /></a>
+      <a href="#instPiano"><img class="animate__shakeX" src="https://img.icons8.com/office/40/000000/arrow.png" alt="arrow image" /></a>
     </div>
 
 
     <div id="pianoContent" class="content-piano animate__fadeInUp">
       <div id="instPiano" class="intruccions">
 
-        <h4><img src="https://img.icons8.com/cotton/44/000000/piano.png" />Piano Authentication</h4>
+        <h4><img src="https://img.icons8.com/cotton/44/000000/piano.png" alt="Piano logo" />Piano Authentication</h4>
         <p>Abajo encontrarás un piano, las notas serán
           el acceso a tu cuenta.
         </p>
