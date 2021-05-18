@@ -80,7 +80,7 @@
       </script>
 
       <input type="tel" class="form-control animate__fadeInUp" id="telefono" placeholder="TELEFONO" name="phone"
-        value="{{phone}}" minlength="10" required pattern="[0-9]+" title="Ingrese solo números" />
+        value="{{phone}}" minlength="9" maxlength="10"  required pattern="[0-9]+" title="Ingrese solo números" />
 
       <input type="date" class="form-control animate__fadeInUp" id="Fecha" placeholder="FECHA DE NACIMIENTO" name="age"
         value="{{age}}" required min="1940-12-31" max="2008-12-31" />
@@ -222,7 +222,7 @@
 
       <label class='genero animate__fadeInUp' for="">GENERO:</label>
       <div class="content-gender animate__fadeInUp">
-        <input type="radio" id="masculino" name="genero" value="masculino" required />
+        <input type="radio" id="masculino" name="genero" value="masculino" title="Seleccione uno porfavor" required />
         <label for="masculino">Masculino</label>
         <input type="radio" id="femenino" name="genero" value="femenino" />
         <label for="femenino">Femenino</label>
