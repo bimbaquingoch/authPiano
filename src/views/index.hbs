@@ -178,29 +178,42 @@
       {{!-- <input type="file" class="btn-file load-img animate__fadeInUp" id="file" name='img' accept="image/*" --}}
         {{!-- onchange="validateFileType()" required /> --}}
 
-        <button type="button" class="load-img  btn btn-primary animate__fadeInUp " onclick="document.getElementById('inputFile').click()">
-          <strong>
-            Cargar o Arrastar Imagen
-          </strong>
-        </button>
+      <button type="button" class="load-img  btn btn-primary animate__fadeInUp "
+        onclick="document.getElementById('inputFile').click()">
+        <strong>
+          Cargar o Arrastar Imagen
+        </strong>
+      </button>
       <div class="form-group inputDnD animate__fadeInUp">
         <label class="sr-only" for="inputFile">File Upload</label>
-        <input type="file" class="form-control-file text-info" name='img' id="inputFile" accept="image/*" onchange="readUrl(this)" required/>
+        <input type="file" class="form-control-file text-info" name='img' id="inputFile" accept="image/*"
+          onchange="readUrl(this)" required />
       </div>
+
       <script charset="utf-8">
         function readUrl(input) {
-  
-        if (input.files && input.files[0]) {
-          let reader = new FileReader();
-          reader.onload = (e) => {
-          let imgData = e.target.result;
-          let imgName = input.files[0].name;
-          input.setAttribute("data-title", imgName);
-          console.log(e.target.result);
+
+          var extensiones_permitidas = [".png", ".bmp", ".jpg", ".jpeg"];
+          var rutayarchivo = input.value;
+          var ultimo_punto = input.value.lastIndexOf(".");
+          var extension = rutayarchivo.slice(ultimo_punto, rutayarchivo.length);
+
+          if (extensiones_permitidas.indexOf(extension) == -1) {
+            alert("Extensión de archivo no valida");
+            document.getElementById(input.id).value = "";
+            return; // Si la extension es no válida ya no chequeo lo de abajo.
+          }
+
+          if (input.files && input.files[0]) {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+              let imgData = e.target.result;
+              let imgName = input.files[0].name;
+              input.setAttribute("data-title", imgName);
+            }
+            reader.readAsDataURL(input.files[0]);
+          }
         }
-        reader.readAsDataURL(input.files[0]);
-        }
-      }
       </script>
 
       <input type="text" class="form-control animate__fadeInUp" id="numCedula" placeholder="NUMERO DE CEDULA"
@@ -216,7 +229,11 @@
         <input type="radio" id="otro" name="genero" value="otro" />
         <label for="otro">Otro</label>
       </div>
-      <a href="#instPiano"><img class="animate__shakeX" src="https://img.icons8.com/office/40/000000/arrow.png" alt="arrow image" /></a>
+
+      <a id="href" href="#instPiano">
+        <img class="animate__shakeX" src="https://img.icons8.com/office/40/000000/arrow.png" alt="arrow image" />
+      </a>
+
     </div>
 
 
@@ -233,7 +250,8 @@
         <p>Para finalizar tu registro debes seleccionar 4 notas y recordar el
           número correspondiente a cada nota como muestra el ejemplo</p>
 
-        <p>Cuando presiones en una nota, por tu seguridad se pintará de rojo y se bloqueará la nota anterior y la siguiente como se ve en el ejemplo</p>
+        <p>Cuando presiones en una nota, por tu seguridad se pintará de rojo y se bloqueará la nota anterior y la
+          siguiente como se ve en el ejemplo</p>
 
         <img class="imgInst" src="/img/auth.png" alt="">
 
@@ -259,16 +277,16 @@
           </tr>
           <tr>
             <th>
-              <input type="text" id="nota1"  name="nota1" placeholder="&#x266b" value="" size="1" readonly />
+              <input type="text" id="nota1" name="nota1" placeholder="&#x266b" value="" size="1" readonly />
             </th>
             <th>
-              <input type="text" id="nota2"  name="nota2" placeholder="&#x266b" value="" size="1" readonly/>
+              <input type="text" id="nota2" name="nota2" placeholder="&#x266b" value="" size="1" readonly />
             </th>
             <th>
-              <input type="text" id="nota3"  name="nota3" placeholder="&#x266b" value="" size="1" readonly/>
+              <input type="text" id="nota3" name="nota3" placeholder="&#x266b" value="" size="1" readonly />
             </th>
             <th>
-              <input type="text" id="nota4"  name="nota4" placeholder="&#x266b" value="" size="1" readonly/>
+              <input type="text" id="nota4" name="nota4" placeholder="&#x266b" value="" size="1" readonly />
             </th>
           </tr>
         </thead>
@@ -330,7 +348,7 @@
 
       <div class="content-buttons">
         <input type="button" class="btn btn-warning" value="Limpiar" onclick="resetNotasIndex()">
-        <button type="submit" class="btn btn-primary" >
+        <button type="submit" class="btn btn-primary">
           Enviar
         </button>
       </div>
