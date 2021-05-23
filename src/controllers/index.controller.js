@@ -55,6 +55,7 @@ indexCtrl.registro = async (req, res) => {
     valor3,
   } = req.body;
 
+  errors.splice(0, errors.length);
   if (cedula.length != 10) {
     errors.push({ text: "Su cedula debe tener 10 números" });
   }
@@ -99,16 +100,16 @@ indexCtrl.registro = async (req, res) => {
   if (nicknameUser) {
     errors.push({ text: "Su nickname ya se encuentra registrado" });
   }
+
   var credencial = {};
-  if (nota1 && nota2 && nota3 && nota4) {
+  if (nota1 == "" || nota2 == "" || nota3 == "" || nota4 == "") {
+    errors.push({ text: "Una o varias notas no tiene asignado un valor" });
+  } else {
     credencial = {
       id: [valor0, valor1, valor2, valor3],
       nota: [nota1, nota2, nota3, nota4],
     };
-  } else {
-    errors.push({ text: "Una o varias notas no han sido seleccionadas" });
   }
-
   if (errors.length > 0) {
     res.render("index", {
       errors,
@@ -152,7 +153,6 @@ indexCtrl.registro = async (req, res) => {
  */
 
     await usuarioNuevo.save();
-    console.log(req.body);
     mensajes.push({ text: "Usuario registrado exitosamente" });
     res.render("login", { mensajes });
   }
@@ -260,3 +260,4 @@ indexCtrl.cerrarSesion = (req, res) => {
 
 // exportamos todo el objeto indexCtrl
 module.exports = indexCtrl;
+

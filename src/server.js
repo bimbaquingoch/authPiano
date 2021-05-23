@@ -7,6 +7,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const morgan = require("morgan");
 const passport = require("passport");
+const multer = require("multer");
 
 // modulo APP
 // inicializacion del modulo de express
@@ -84,6 +85,20 @@ app.use(require("./routes/index.routes"));
 // le decimos a NODEJS, aqui esta la carpeta public
 // donde puede buscar nuestros estilos CSS
 app.use(express.static(path.join(__dirname, "public")));
+
+//middleware
+// middlewares
+app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: false }));
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'public/img/uploads'),
+  filename: (req, file, cb, filename) => {
+    console.log(file);
+    cb(null, uuid() + path.extname(file.originalname));
+  }
+})
+app.use(multer({ storage }).single('img'));
+
 
 // exportamos todo el modulo app declarado al inicio
 // que ejecuta express
