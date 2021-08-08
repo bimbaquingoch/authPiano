@@ -19,7 +19,7 @@ require("./config/passport");
 
 // accedemos la variable de entorno para el puerto
 // busca el puerto 3000 o un puerto que este libre en el server
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 4000);
 
 // le decimos que encuentre el directorio de views
 // donde se encuentran los archivos HBS
@@ -88,17 +88,16 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //middleware
 // middlewares
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, 'public/img/uploads'),
+  destination: path.join(__dirname, "public/img/uploads"),
   filename: (req, file, cb, filename) => {
     console.log(file);
     cb(null, uuid() + path.extname(file.originalname));
-  }
-})
-app.use(multer({ storage }).single('img'));
-
+  },
+});
+app.use(multer({ storage }).single("img"));
 
 // exportamos todo el modulo app declarado al inicio
 // que ejecuta express

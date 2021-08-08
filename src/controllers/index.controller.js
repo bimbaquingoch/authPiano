@@ -260,4 +260,3 @@ indexCtrl.cerrarSesion = (req, res) => {
 
 // exportamos todo el objeto indexCtrl
 module.exports = indexCtrl;
-

@@ -1,5 +1,6 @@
 <h1 align="center">Welcome to Piano: Auth System 👋</h1>
 <p>
+<img src='./media/piano.png'>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-yellow.svg" />
@@ -28,11 +29,8 @@ npm run dev
 
 ## Authors
 
-- 👤 **Diego Bahamonde**
-- 👤 **Kevin Changoluisa**
 - 👤 **Bryan Imbaquingo**
-- 👤 **Arnaldo Ortiz**
-- 👤 **Wilian Tapia**
+- 👤 **Kevin Changoluisa**
 
 ## Show your support
 
